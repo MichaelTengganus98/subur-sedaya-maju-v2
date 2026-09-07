@@ -1,0 +1,70 @@
+{% load static %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.subursedayamaju.co.id/#website",
+      "url": "https://www.subursedayamaju.co.id/",
+      "name": "PT Subur Sedaya Maju",
+      "inLanguage": "id-ID",
+      "publisher": { "@id": "https://www.subursedayamaju.co.id/#organization" }
+    },
+    {
+      "@type": ["MovingCompany", "LocalBusiness"],
+      "@id": "https://www.subursedayamaju.co.id/#organization",
+      "name": "PT Subur Sedaya Maju",
+      "legalName": "PT. Subur Sedaya Maju",
+      "url": "https://www.subursedayamaju.co.id/",
+      "description": "Perusahaan jasa transportasi dan penyewaan alat berat di Prabumulih, Sumatera Selatan, beroperasi sejak 2006 dengan fokus pada keselamatan kerja (K3/SMK3).",
+      "foundingDate": "2006",
+      "email": "admin@subursedayamaju.co.id",
+      "telephone": "+6282185576869",
+      "image": "https://www.subursedayamaju.co.id{% static 'images/hero-truck.jpeg' %}",
+      "logo": "https://www.subursedayamaju.co.id{% static 'images/logo-horizontal.png' %}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jalur Pipa Pertamina, Patih Galung, Kec. Prabumulih Barat",
+        "addressLocality": "Prabumulih",
+        "addressRegion": "Sumatera Selatan",
+        "postalCode": "31117",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -3.4325,
+        "longitude": 104.2356
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=PT+Subur+Sedaya+Maju+Prabumulih",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Sumatera Selatan" },
+        { "@type": "Country", "name": "Indonesia" }
+      ],
+      "knowsAbout": [
+        "Transportasi alat berat",
+        "Penyewaan alat berat",
+        "Self-loader truck",
+        "Lowboy / lowbed trailer",
+        "Trailer dan dolly",
+        "Crawler crane 25-260 ton",
+        "Dump truck",
+        "Mobilisasi alat berat proyek tambang dan konstruksi"
+      ],
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pengangkutan Alat Berat" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pengangkutan Muatan Besar" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Peralatan Industri & Konstruksi" } }
+      ]
+    }
+  ]
+}
+</script>

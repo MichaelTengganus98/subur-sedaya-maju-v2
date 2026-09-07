@@ -112,5 +112,6 @@ Submit button label: "Kirim Pesan". Labels are in English; the rest of the site 
 - Contact form has no server side — messages depend on the visitor having a mail client.
 - Placeholder content in Fleet, Testimonials, Certifications, Coverage, and 3 FAQ answers (see `CONTENT-TODO.md`).
 - Form labels are English while the site is Indonesian.
-- No structured data / `sitemap.xml` / `robots.txt`.
+- ~~No structured data / `sitemap.xml` / `robots.txt`.~~ Added on
+  `revamp/django-cpanel` — see `SEO.md`.
 - Single HTML file — no templating, so shared markup (header/footer) is duplicated only once today but will not scale to multiple pages.

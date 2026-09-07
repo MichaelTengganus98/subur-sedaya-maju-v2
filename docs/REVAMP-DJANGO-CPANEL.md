@@ -228,7 +228,10 @@ as gaps in `SITE-OVERVIEW.md` §8.
 4. ⬜ `contact` app: model + form + email send + tests. Wire `static/js/main.js` to POST.
 5. ⬜ `content` app: models + admin + template loops; migrate existing hard-coded
    copy into fixtures/data migration.
-6. ⬜ SEO: JSON-LD, sitemap, robots, meta review.
+6. 🔶 SEO: JSON-LD (`WebSite` + `MovingCompany`/`LocalBusiness` + `FAQPage`),
+   `sitemap.xml`, `robots.txt`, OG/Twitter/geo meta, heading hierarchy — done.
+   Remaining: exact geo coords, `sameAs`, GSC/GBP, analytics, per-service pages.
+   See `SEO.md`.
 7. ⬜ Deploy to a **staging subdomain** on cPanel, verify, then cut over the main domain.
 8. ⬜ Keep `main` (static site) as the rollback target until the Django site is verified live.
 

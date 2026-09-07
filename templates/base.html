@@ -3,16 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% block title %}PT. Subur Sedaya Maju — Transportasi Alat Berat Terpercaya{% endblock %}</title>
-<meta name="description" content="{% block meta_description %}PT Subur Sedaya Maju adalah perusahaan transportasi alat berat terpercaya sejak 2006, menyediakan solusi pengangkutan muatan besar, alat konstruksi, dan peralatan industri di seluruh Indonesia dengan armada modern dan tim profesional.{% endblock %}">
-<meta name="robots" content="index, follow">
+<title>{% block title %}Transportasi &amp; Sewa Alat Berat Prabumulih | PT Subur Sedaya Maju{% endblock %}</title>
+<meta name="description" content="{% block meta_description %}PT Subur Sedaya Maju — jasa transportasi dan sewa alat berat di Prabumulih, Sumatera Selatan sejak 2006. Self-loader, lowboy, trailer, crawler crane, dan dump truck untuk proyek tambang, konstruksi, dan energi.{% endblock %}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="PT. Subur Sedaya Maju">
 <link rel="canonical" href="https://www.subursedayamaju.co.id/">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+<meta name="geo.region" content="ID-SS">
+<meta name="geo.placename" content="Prabumulih, Sumatera Selatan">
+<meta name="geo.position" content="-3.4325;104.2356">
+<meta name="ICBM" content="-3.4325, 104.2356">
+
 <meta property="og:type" content="website">
-<meta property="og:title" content="PT. Subur Sedaya Maju — Transportasi Alat Berat Terpercaya">
-<meta property="og:description" content="Perusahaan jasa transportasi alat berat yang fokus pada keselamatan, melayani pelanggan di seluruh Indonesia sejak 2006.">
-<meta property="og:url" content="https://www.subursedayamaju.co.id/">
+<meta property="og:locale" content="id_ID">
 <meta property="og:site_name" content="PT. Subur Sedaya Maju">
-<meta property="og:image" content="{% static 'images/logo-horizontal.png' %}">
+<meta property="og:title" content="{% block og_title %}Transportasi &amp; Sewa Alat Berat Prabumulih | PT Subur Sedaya Maju{% endblock %}">
+<meta property="og:description" content="{% block og_description %}Jasa transportasi dan sewa alat berat di Prabumulih, Sumatera Selatan sejak 2006 — self-loader, lowboy, trailer, crawler crane, dump truck.{% endblock %}">
+<meta property="og:url" content="https://www.subursedayamaju.co.id/">
+<meta property="og:image" content="https://www.subursedayamaju.co.id{% static 'images/hero-truck.jpeg' %}">
+<meta property="og:image:alt" content="Armada trailer PT Subur Sedaya Maju mengangkut alat berat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Transportasi &amp; Sewa Alat Berat Prabumulih | PT Subur Sedaya Maju">
+<meta name="twitter:description" content="Jasa transportasi dan sewa alat berat di Prabumulih, Sumatera Selatan sejak 2006.">
+<meta name="twitter:image" content="https://www.subursedayamaju.co.id{% static 'images/hero-truck.jpeg' %}">
+
 <link rel="icon" href="{% static 'images/favicon-32.png' %}" sizes="32x32">
 <link rel="icon" href="{% static 'images/favicon.png' %}" sizes="192x192">
 <link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}">
@@ -21,6 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% include 'partials/_seo_jsonld.html' %}
 {% block extra_head %}{% endblock %}
 </head>
 <body>

@@ -1,6 +1,50 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.subursedayamaju.co.id/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wilayah mana saja yang dilayani oleh PT Subur Sedaya Maju?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Basis operasional kami di Prabumulih, Sumatera Selatan, dan kami rutin melayani proyek tambang, konstruksi, serta energi di seluruh wilayah Sumatera Selatan. Pengiriman ke wilayah lain di Indonesia dapat dilayani sesuai kebutuhan proyek."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bagaimana proses pemesanan jasa transportasi alat berat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anda dapat menghubungi tim kami melalui WhatsApp atau formulir kontak untuk konsultasi awal, dilanjutkan dengan survei dan perencanaan rute sebelum pengiriman dilaksanakan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apakah tersedia asuransi untuk pengiriman alat berat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kebutuhan asuransi pengiriman dibahas pada tahap konsultasi dan disesuaikan dengan nilai, jenis, serta rute alat berat Anda. Tim kami akan membantu menyiapkan opsi perlindungan yang sesuai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Berapa lama estimasi waktu pengiriman?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Estimasi waktu ditentukan setelah survei rute karena bergantung pada jarak, kondisi jalan, proses perizinan, dan dimensi muatan. Anda akan menerima perkiraan jadwal setelah konsultasi dan survei awal."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block body %}
 <a class="skip-link" href="#main-content">Langsung ke konten</a>
 
@@ -67,7 +111,7 @@
 				</ul>
 			</div>
 			<div class="hero-media reveal">
-				<img src="{% static 'images/hero-truck.jpeg' %}" alt="Armada trailer PT Subur Sedaya Maju mengangkut alat berat" width="1200" height="900">
+				<img src="{% static 'images/hero-truck.jpeg' %}" alt="Armada trailer PT Subur Sedaya Maju mengangkut alat berat" width="1200" height="900" fetchpriority="high" decoding="async">
 			</div>
 		</div>
 	</section>
@@ -167,7 +211,7 @@
 					<div class="process-icon">
 						<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
 					</div>
-					<h4>Konsultasi Kebutuhan</h4>
+					<h3>Konsultasi Kebutuhan</h3>
 					<p>Diskusikan jenis alat berat, dimensi muatan, dan tujuan pengiriman bersama tim kami.</p>
 				</div>
 				<div class="process-step reveal">
@@ -175,7 +219,7 @@
 					<div class="process-icon">
 						<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 					</div>
-					<h4>Survei &amp; Perencanaan Rute</h4>
+					<h3>Survei &amp; Perencanaan Rute</h3>
 					<p>Tim kami melakukan survei lokasi dan menyusun rencana rute serta pengamanan yang sesuai.</p>
 				</div>
 				<div class="process-step reveal">
@@ -183,7 +227,7 @@
 					<div class="process-icon">
 						<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
 					</div>
-					<h4>Proses Pengiriman</h4>
+					<h3>Proses Pengiriman</h3>
 					<p>Pengangkutan dilaksanakan oleh pengemudi berpengalaman dengan armada yang telah disiapkan.</p>
 				</div>
 				<div class="process-step reveal">
@@ -191,7 +235,7 @@
 					<div class="process-icon">
 						<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
 					</div>
-					<h4>Dukungan Purna Pengiriman</h4>
+					<h3>Dukungan Purna Pengiriman</h3>
 					<p>Kami memastikan alat berat tiba dengan aman dan siap dioperasikan di lokasi tujuan.</p>
 				</div>
 			</div>
@@ -258,7 +302,7 @@
 					<div class="fleet-media">
 						<img src="{% static 'images/hero-truck.jpeg' %}" alt="Self-loader truck PT Subur Sedaya Maju mengangkut crawler crane" loading="lazy">
 					</div>
-					<h4>Self-Loader Truck</h4>
+					<h3>Self-Loader Truck</h3>
 					<p>Truk dengan sistem muat-bongkar mandiri untuk memuat dan menurunkan alat berat tanpa crane bantu.</p>
 				</div>
 				<div class="fleet-card reveal">
@@ -266,7 +310,7 @@
 						<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15h13V9h4l3 4v2h-2"></path><path d="M2 15V8h9"></path><circle cx="6" cy="18" r="2"></circle><circle cx="18" cy="18" r="2"></circle></svg>
 						<span>Lowboy / Lowbed Trailer</span>
 					</div>
-					<h4>Lowboy (Lowbed Trailer)</h4>
+					<h3>Lowboy (Lowbed Trailer)</h3>
 					<p>Deck rendah untuk excavator, dozer, dan muatan over-dimension dengan titik berat tinggi.</p>
 				</div>
 				<div class="fleet-card reveal">
@@ -274,14 +318,14 @@
 						<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 16h22"></path><path d="M3 16V12h10l3 4"></path><circle cx="6" cy="19" r="2"></circle><circle cx="13" cy="19" r="2"></circle><circle cx="19" cy="19" r="2"></circle></svg>
 						<span>Trailer &amp; Dolly</span>
 					</div>
-					<h4>Trailer &amp; Dolly</h4>
+					<h3>Trailer &amp; Dolly</h3>
 					<p>Kombinasi trailer dan dolly untuk muatan panjang serta distribusi beban antar sumbu.</p>
 				</div>
 				<div class="fleet-card reveal">
 					<div class="fleet-media">
 						<img src="{% static 'images/partner-photo.png' %}" alt="Crawler crane dan alat berat di pool PT Subur Sedaya Maju" loading="lazy">
 					</div>
-					<h4>Crawler Crane 25 – 260 Ton</h4>
+					<h3>Crawler Crane 25 – 260 Ton</h3>
 					<p>Sewa crane crawler kapasitas 25 T hingga 260 T untuk pengangkatan dan penempatan beban berat.</p>
 				</div>
 				<div class="fleet-card reveal">
@@ -289,14 +333,14 @@
 						<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h11v-5H8l-3 3H3z"></path><path d="M14 12l3-4h3v9h-6"></path><circle cx="7" cy="19" r="2"></circle><circle cx="17" cy="19" r="2"></circle></svg>
 						<span>Dump Truck</span>
 					</div>
-					<h4>Dump Truck</h4>
+					<h3>Dump Truck</h3>
 					<p>Angkutan material curah dan pendukung mobilisasi proyek di area tambang dan konstruksi.</p>
 				</div>
 				<div class="fleet-card reveal">
 					<div class="fleet-media">
 						<img src="{% static 'images/mitra-photo.jpeg' %}" alt="Wheel loader dan alat berat pendukung PT Subur Sedaya Maju" loading="lazy">
 					</div>
-					<h4>Alat Berat Pendukung</h4>
+					<h3>Alat Berat Pendukung</h3>
 					<p>Wheel loader, motor grader, dozer, vibro, hiab crane, dan unit excavator untuk kebutuhan di lokasi.</p>
 				</div>
 			</div>
@@ -355,28 +399,28 @@
 					<div class="cert-icon">
 						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"></path></svg>
 					</div>
-					<h4>Badan Hukum PT</h4>
+					<h3>Badan Hukum PT</h3>
 					<span>Perseroan Terbatas resmi berdomisili di Prabumulih, Sumatera Selatan</span>
 				</div>
 				<div class="cert-badge reveal">
 					<div class="cert-icon">
 						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 					</div>
-					<h4>Beroperasi Sejak 2006</h4>
+					<h3>Beroperasi Sejak 2006</h3>
 					<span>Hampir dua dekade pengalaman mobilisasi alat berat</span>
 				</div>
 				<div class="cert-badge reveal">
 					<div class="cert-icon">
 						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
 					</div>
-					<h4>Komitmen K3 / SMK3</h4>
+					<h3>Komitmen K3 / SMK3</h3>
 					<span>Keselamatan dan kesehatan kerja sebagai prioritas utama di setiap proyek</span>
 				</div>
 				<div class="cert-badge reveal">
 					<div class="cert-icon">
 						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
 					</div>
-					<h4>Bengkel Pemeliharaan Sendiri</h4>
+					<h3>Bengkel Pemeliharaan Sendiri</h3>
 					<span>Perawatan armada in-house dengan suku cadang dan tenaga terampil</span>
 				</div>
 			</div>
@@ -453,28 +497,28 @@
 					<div class="contact-info-item">
 						<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 						<div>
-							<h4>Alamat</h4>
+							<h3>Alamat</h3>
 							<p>Jalur Pipa Pertamina, Patih Galung, Kec. Prabumulih Bar., Kota Prabumulih, Sumatera Selatan 31117</p>
 						</div>
 					</div>
 					<div class="contact-info-item">
 						<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
 						<div>
-							<h4>Telepon / WhatsApp</h4>
+							<h3>Telepon / WhatsApp</h3>
 							<p><a href="https://wa.me/6282185576869">0821-8557-6869</a></p>
 						</div>
 					</div>
 					<div class="contact-info-item">
 						<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
 						<div>
-							<h4>Email</h4>
+							<h3>Email</h3>
 							<p><a href="mailto:admin@subursedayamaju.co.id">admin@subursedayamaju.co.id</a></p>
 						</div>
 					</div>
 					<div class="contact-info-item">
 						<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 						<div>
-							<h4>Jam Operasional</h4>
+							<h3>Jam Operasional</h3>
 							<p>Senin — Sabtu, 08.00 — 17.00 WIB</p>
 						</div>
 					</div>
