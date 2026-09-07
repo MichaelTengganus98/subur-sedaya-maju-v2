@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}Transportasi &amp; Sewa Alat Berat Prabumulih | PT Subur Sedaya Maju{% endblock %}</title>
 <meta name="description" content="{% block meta_description %}PT Subur Sedaya Maju — jasa transportasi dan sewa alat berat di Prabumulih, Sumatera Selatan sejak 2006. Self-loader, lowboy, trailer, crawler crane, dan dump truck untuk proyek tambang, konstruksi, dan energi.{% endblock %}">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="robots" content="{% block robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}">
 <meta name="author" content="PT. Subur Sedaya Maju">
-<link rel="canonical" href="https://www.subursedayamaju.co.id/">
+<link rel="canonical" href="{% block canonical_url %}{{ CANONICAL_HOST }}/{% endblock %}">
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+<link rel="manifest" href="{% static 'site.webmanifest' %}">
 
 <meta name="geo.region" content="ID-SS">
 <meta name="geo.placename" content="Prabumulih, Sumatera Selatan">
@@ -20,14 +21,14 @@
 <meta property="og:site_name" content="PT. Subur Sedaya Maju">
 <meta property="og:title" content="{% block og_title %}Transportasi &amp; Sewa Alat Berat Prabumulih | PT Subur Sedaya Maju{% endblock %}">
 <meta property="og:description" content="{% block og_description %}Jasa transportasi dan sewa alat berat di Prabumulih, Sumatera Selatan sejak 2006 — self-loader, lowboy, trailer, crawler crane, dump truck.{% endblock %}">
-<meta property="og:url" content="https://www.subursedayamaju.co.id/">
-<meta property="og:image" content="https://www.subursedayamaju.co.id{% static 'images/hero-truck.jpeg' %}">
+<meta property="og:url" content="{% block og_url %}{{ CANONICAL_HOST }}/{% endblock %}">
+<meta property="og:image" content="{{ CANONICAL_HOST }}{% static 'images/hero-truck.jpeg' %}">
 <meta property="og:image:alt" content="Armada trailer PT Subur Sedaya Maju mengangkut alat berat">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Transportasi &amp; Sewa Alat Berat Prabumulih | PT Subur Sedaya Maju">
 <meta name="twitter:description" content="Jasa transportasi dan sewa alat berat di Prabumulih, Sumatera Selatan sejak 2006.">
-<meta name="twitter:image" content="https://www.subursedayamaju.co.id{% static 'images/hero-truck.jpeg' %}">
+<meta name="twitter:image" content="{{ CANONICAL_HOST }}{% static 'images/hero-truck.jpeg' %}">
 
 <link rel="icon" href="{% static 'images/favicon-32.png' %}" sizes="32x32">
 <link rel="icon" href="{% static 'images/favicon.png' %}" sizes="192x192">
@@ -39,6 +40,10 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% include 'partials/_seo_jsonld.html' %}
 {% block extra_head %}{% endblock %}
+
+{% if PLAUSIBLE_DOMAIN %}<script defer data-domain="{{ PLAUSIBLE_DOMAIN }}" src="https://plausible.io/js/script.js"></script>{% endif %}
+{% if GA4_MEASUREMENT_ID %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ GA4_MEASUREMENT_ID }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ GA4_MEASUREMENT_ID }}');</script>{% endif %}
 </head>
 <body>
 {% block body %}{% endblock %}

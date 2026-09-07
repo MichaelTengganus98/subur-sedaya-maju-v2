@@ -75,6 +75,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "apps.pages.context_processors.site",
             ],
         },
     },
@@ -125,6 +126,13 @@ SITE_NAME = "PT. Subur Sedaya Maju"
 CONTACT_EMAIL = env("CONTACT_EMAIL", "admin@subursedayamaju.co.id")
 CONTACT_PHONE = "0821-8557-6869"
 CONTACT_WHATSAPP = "6282185576869"
+
+# Absolute origin used for canonical URLs, Open Graph, and JSON-LD (no trailing /).
+CANONICAL_HOST = env("CANONICAL_HOST", "https://www.subursedayamaju.co.id")
+
+# --- Analytics (both inert until an id / domain is provided) ----------------
+GA4_MEASUREMENT_ID = env("GA4_MEASUREMENT_ID", "")  # e.g. G-XXXXXXXXXX
+PLAUSIBLE_DOMAIN = env("PLAUSIBLE_DOMAIN", "")  # e.g. subursedayamaju.co.id
 
 # --- Email ------------------------------------------------------------------
 EMAIL_BACKEND = env(

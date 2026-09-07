@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Halaman Tidak Ditemukan (404) | PT Subur Sedaya Maju{% endblock %}
+{% block meta_description %}Halaman yang Anda cari tidak ditemukan di situs PT Subur Sedaya Maju.{% endblock %}
+{% block robots %}noindex, follow{% endblock %}
+
+{% block body %}
+<main id="top">
+	<section class="section section-light">
+		<div class="container" style="text-align:center; padding:56px 0;">
+			<p class="kicker">Error 404</p>
+			<h1 class="section-title">Halaman tidak ditemukan</h1>
+			<p style="max-width:52ch; margin:16px auto 28px; color:var(--ink-soft);">
+				Halaman yang Anda cari mungkin telah dipindahkan atau tidak lagi tersedia.
+			</p>
+			<a href="/" class="btn btn-primary">Kembali ke Beranda</a>
+		</div>
+	</section>
+</main>
+{% endblock %}
