@@ -67,37 +67,56 @@ and what still needs client input or a later phase.
 - `CANONICAL_HOST` env var (default `https://www.subursedayamaju.co.id`) drives
   every absolute URL (canonical, OG, JSON-LD) so staging can override it.
 
-## 2. Needs the client / real data before it ships
+## 2. Client answers already applied
 
-- **Exact geo coordinates.** `_seo_jsonld.html` and the geo meta tags use an
-  approximate Prabumulih city point (`-3.4325, 104.2356`). Replace with the exact
-  lat/long from the company's Google Business Profile ("Business Profile → Edit →
-  location pin"), and keep the address string identical to the profile.
-- **`sameAs`** is intentionally omitted — add verified profile URLs once known
-  (Google Business Profile, Instagram, LinkedIn, Facebook, YouTube, industry
-  directories). This is one of the strongest entity signals.
-- **Real certificates** (NIB, SIUP, SMK3, ISO 9001/45001, association
-  membership): when supplied, add `hasCredential` / `Certification` nodes and a
-  logo wall — see `CONTENT-TODO.md`.
-- **Aggregate rating / reviews.** Do **not** hard-code `aggregateRating` or
-  `review` in JSON-LD unless it reflects genuine, on-page, verifiable reviews —
-  fake rating markup is a manual-action risk. The Google reviews CTA stays as-is
-  until real testimonials are collected.
-- **Dedicated 1200×630 social share image** (`og:image`) with the logo + a strong
-  photo; the current hero JPEG is 1200×900 (works, not ideal ratio).
-- Confirm the **service-area list** (Prabumulih, Palembang, Muara Enim, Lahat +
-  "nasional") and the footer's "seluruh Indonesia" claim.
+- **Geo coordinates** — decoded from the Google listing's Plus Code
+  (`G6X8+XWJ Prabumulih`, CID `5137559904468020167`): `-3.45004, 104.21727`.
+  Used in `_seo_jsonld.html` `geo` and the `geo.position` / `ICBM` meta.
+  ~14 m precision; if the map pin is elsewhere, send the exact `lat, long` from
+  the pin's right-click menu and it's a one-line change.
+- **`sameAs`** — Facebook page added
+  (`facebook.com/pages/Yard-Pt.-Subur-Sedaya-Maju/180378142812477`). Add more as
+  they exist (Instagram, LinkedIn, TikTok, directory listings).
+- **`hasMap`** — now the real listing link (`google.com/maps?cid=...`).
+- **Service area** — Sumatra, Kalimantan, Jawa. Applied to JSON-LD `areaServed`
+  (org + each Service), the coverage section chips, the wilayah FAQ (visible +
+  JSON-LD), and the footer blurb (was "seluruh Indonesia").
+
+## 2b. Still needs the client / real data
+
+- **Google Business Profile — BLOCKED.** The client has said they cannot create
+  one. Consequences: no Google Maps pack listing, no local knowledge panel, and
+  Google has no first-party confirmation of NAP/hours. Partial mitigations that
+  do **not** need GBP: the `LocalBusiness` JSON-LD (done), the Facebook page,
+  **Bing Places for Business** and **Apple Business Connect** (both free,
+  independent of Google), and consistent NAP on Indonesian B2B directories. Revisit
+  GBP later — it remains the single highest-value local lever.
+- **Real certificates** (NIB, SIUP, SMK3, ISO, association membership) — client
+  said **skip for now**. When supplied: `hasCredential` nodes + a logo wall.
+- **Company logo file** for JSON-LD `logo` / `og:image` — client said skip for
+  now; currently points at `logo-horizontal.png` / the hero photo.
+- **Aggregate rating / reviews** — do **not** hard-code `aggregateRating` /
+  `review` unless it reflects genuine, on-page, verifiable reviews. Fake rating
+  markup is a manual-action risk. The Google-reviews CTA stays until real
+  testimonials are collected.
+- **Dedicated 1200×630 social share image** — current hero JPEG is 1200×900
+  (works, not ideal ratio).
 
 ## 3. Off-page / operational (not code)
 
-- **Google Search Console** — verify the domain (DNS TXT), submit
-  `https://www.subursedayamaju.co.id/sitemap.xml`, watch Coverage + Core Web
-  Vitals.
-- **Google Business Profile** — claim/complete it: category
-  "Perusahaan transportasi" / "Jasa penyewaan alat berat", service area, hours,
-  photos of real units, and start collecting reviews. This is the highest-impact
-  lever for a local B2B operator and feeds the Map Pack.
-- **Bing Webmaster Tools** — import from GSC.
+- **Google Search Console** — verification token
+  `google-site-verification=5rAifQ57E0D1t9sLSYTmmFViQS3BRacMBBMxoLgwFHU`.
+  Two ways, either works:
+  1. **DNS TXT** (Domain property, covers all subdomains) — add a TXT record at
+     Dewaweb (host `@`, value = the whole `google-site-verification=...` string).
+  2. **HTML tag** (URL-prefix property) — set `GOOGLE_SITE_VERIFICATION` env var
+     to just the token (`5rAif…FHU`); `base.html` renders the meta tag. Deploy,
+     then click Verify.
+  After verifying, submit `https://www.subursedayamaju.co.id/sitemap.xml` and
+  watch Coverage + Core Web Vitals. **Do not remove** the record/tag afterwards.
+- **Bing Webmaster Tools** — import from GSC once GSC is verified.
+- **Bing Places + Apple Business Connect** — free business listings that do not
+  depend on Google Business Profile (which is blocked, see §2b).
 - **Analytics** — the wiring is done (§1). Client picks GA4 or Plausible and
   provides the id/domain; set `GA4_MEASUREMENT_ID` / `PLAUSIBLE_DOMAIN` in the
   cPanel Python-App env and restart. GA4 also needs a cookie-consent banner under

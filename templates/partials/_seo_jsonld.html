@@ -55,10 +55,13 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -3.4325,
-        "longitude": 104.2356
+        "latitude": -3.45004,
+        "longitude": 104.21727
       },
-      "hasMap": "https://www.google.com/maps/search/?api=1&query=PT+Subur+Sedaya+Maju+Prabumulih",
+      "hasMap": "https://www.google.com/maps?cid=5137559904468020167",
+      "sameAs": [
+        "https://www.facebook.com/pages/Yard-Pt.-Subur-Sedaya-Maju/180378142812477"
+      ],
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -68,7 +71,9 @@
         }
       ],
       "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Sumatera Selatan" },
+        { "@type": "Place", "name": "Sumatra, Indonesia" },
+        { "@type": "Place", "name": "Kalimantan, Indonesia" },
+        { "@type": "Place", "name": "Jawa, Indonesia" },
         { "@type": "Country", "name": "Indonesia" }
       ],
       "knowsAbout": [
@@ -89,7 +94,7 @@
             "name": "Pengangkutan Alat Berat",
             "serviceType": "Transportasi alat berat",
             "description": "Layanan transportasi alat berat dan peralatan konstruksi dengan armada truk modern yang dirancang untuk beban dan medan berat.",
-            "areaServed": { "@type": "Country", "name": "Indonesia" },
+            "areaServed": ["Sumatra", "Kalimantan", "Jawa", "Indonesia"],
             "provider": { "@id": "{{ CANONICAL_HOST }}/#organization" }
           }
         },
@@ -100,7 +105,7 @@
             "name": "Pengangkutan Muatan Besar",
             "serviceType": "Angkutan muatan over-dimension",
             "description": "Penanganan muatan berdimensi dan berbobot besar dengan perencanaan rute dan pengamanan yang matang.",
-            "areaServed": { "@type": "Country", "name": "Indonesia" },
+            "areaServed": ["Sumatra", "Kalimantan", "Jawa", "Indonesia"],
             "provider": { "@id": "{{ CANONICAL_HOST }}/#organization" }
           }
         },
@@ -111,7 +116,7 @@
             "name": "Peralatan Industri & Konstruksi",
             "serviceType": "Distribusi peralatan dan material proyek",
             "description": "Distribusi peralatan industri dan material konstruksi ke lokasi proyek di seluruh Indonesia secara aman dan tepat waktu.",
-            "areaServed": { "@type": "Country", "name": "Indonesia" },
+            "areaServed": ["Sumatra", "Kalimantan", "Jawa", "Indonesia"],
             "provider": { "@id": "{{ CANONICAL_HOST }}/#organization" }
           }
         }

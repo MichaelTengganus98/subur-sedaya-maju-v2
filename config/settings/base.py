@@ -134,6 +134,11 @@ CANONICAL_HOST = env("CANONICAL_HOST", "https://www.subursedayamaju.co.id")
 GA4_MEASUREMENT_ID = env("GA4_MEASUREMENT_ID", "")  # e.g. G-XXXXXXXXXX
 PLAUSIBLE_DOMAIN = env("PLAUSIBLE_DOMAIN", "")  # e.g. subursedayamaju.co.id
 
+# Search Console verification token. Renders as a <meta> tag when set; the DNS
+# TXT method does not need this. Value is only the token, not the whole string:
+#   google-site-verification=<TOKEN>   ->   GOOGLE_SITE_VERIFICATION=<TOKEN>
+GOOGLE_SITE_VERIFICATION = env("GOOGLE_SITE_VERIFICATION", "")
+
 # --- Email ------------------------------------------------------------------
 EMAIL_BACKEND = env(
     "EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend"

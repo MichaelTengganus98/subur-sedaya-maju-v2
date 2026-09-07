@@ -11,4 +11,5 @@ def site(request):
         "CANONICAL_HOST": settings.CANONICAL_HOST,
         "GA4_MEASUREMENT_ID": settings.GA4_MEASUREMENT_ID,
         "PLAUSIBLE_DOMAIN": settings.PLAUSIBLE_DOMAIN,
+        "GOOGLE_SITE_VERIFICATION": settings.GOOGLE_SITE_VERIFICATION,
     }
