@@ -189,9 +189,14 @@ it at `config.wsgi`.)
 git pull            # or re-upload changed files
 pip install -r requirements.txt   # if changed
 python manage.py migrate          # if migrations
+python manage.py optimize_images  # only if a source photo changed (webp is committed)
 python manage.py collectstatic --noinput
 touch tmp/restart.txt
 ```
+
+SEO-related env vars to set in the Python App UI (all optional, see `SEO.md`):
+`CANONICAL_HOST`, and `GA4_MEASUREMENT_ID` / `PLAUSIBLE_DOMAIN` when analytics
+is approved.
 
 ## 7. Settings essentials for shared hosting
 

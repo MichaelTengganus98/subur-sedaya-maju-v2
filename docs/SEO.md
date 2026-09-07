@@ -26,15 +26,20 @@ and what still needs client input or a later phase.
 - `<link rel="sitemap">`.
 
 ### Structured data (JSON-LD)
-- **`templates/partials/_seo_jsonld.html`** (included site-wide from `base.html`):
-  `@graph` with
+- **`templates/partials/_seo_jsonld.html`** (included site-wide from `base.html`,
+  URLs built from `settings.CANONICAL_HOST`): `@graph` with
   - `WebSite`
+  - `WebPage` (`isPartOf` website, `about` the org, `primaryImageOfPage`)
   - `MovingCompany` + `LocalBusiness` — name, legal name, founding date 2006,
     phone (E.164), email, `PostalAddress`, `GeoCoordinates`, `hasMap`,
-    `openingHoursSpecification` (Mon–Sat 08:00–17:00), `areaServed`
-    (Sumatera Selatan + Indonesia), `knowsAbout`, `makesOffer` (the 3 services).
+    `contactPoint`, `ImageObject` logo, `openingHoursSpecification`
+    (Mon–Sat 08:00–17:00), `areaServed` (Sumatera Selatan + Indonesia),
+    `knowsAbout`, `makesOffer` → 3 full `Service` nodes with
+    `provider` / `areaServed`.
 - **`FAQPage`** — in `pages/home.html` `{% block extra_head %}`, mirroring the 4
   visible FAQ entries verbatim (Google requires the answer text to be on-page).
+  Note: FAQ *rich results* are now limited to authoritative gov/health sites; the
+  markup is still valid and used by other engines.
 
 ### On-page structure
 - Heading hierarchy fixed: fleet cards, process steps, certification badges and
@@ -42,6 +47,25 @@ and what still needs client input or a later phase.
   level) → now `<h3>`. CSS selectors updated 1:1, so rendering is unchanged.
 - Hero image (LCP) gets `fetchpriority="high"` + `decoding="async"`; all
   below-the-fold images already use `loading="lazy"` with `width`/`height`.
+- Branded **`404.html`** (extends `base.html`, `noindex`) and standalone
+  **`500.html`**.
+
+### Performance / Core Web Vitals
+- **WebP pipeline.** `python manage.py optimize_images` (Pillow) writes a
+  downscaled WebP sibling for each big photo; `templates/partials/_picture.html`
+  + the `to_webp` filter (`apps/pages/templatetags/seo_extras.py`) serve it via
+  `<picture><source>` with the original as `<img>` fallback. First run took the 4
+  photos from **2.4 MB → 337 KB** (the two 1 MB PNGs → ~80 KB each). Re-run after
+  changing any source image; the `.webp` files are committed.
+- `picture{ display:contents }` keeps the wrapper transparent to the existing
+  `.hero-media img` / `.fleet-media img` / `.media img` layout.
+
+### Analytics (wired, inert until configured)
+- `GA4_MEASUREMENT_ID` and `PLAUSIBLE_DOMAIN` env vars (see `.env.example`).
+  `base.html` emits the GA4 `gtag` snippet and/or the Plausible script **only**
+  when the matching value is set — nothing loads until the client provides one.
+- `CANONICAL_HOST` env var (default `https://www.subursedayamaju.co.id`) drives
+  every absolute URL (canonical, OG, JSON-LD) so staging can override it.
 
 ## 2. Needs the client / real data before it ships
 
@@ -74,8 +98,10 @@ and what still needs client input or a later phase.
   photos of real units, and start collecting reviews. This is the highest-impact
   lever for a local B2B operator and feeds the Map Pack.
 - **Bing Webmaster Tools** — import from GSC.
-- **Analytics** — GA4 or a lightweight alternative (Plausible/Umami). Add via
-  `{% block extra_scripts %}` so it is easy to gate by env / consent.
+- **Analytics** — the wiring is done (§1). Client picks GA4 or Plausible and
+  provides the id/domain; set `GA4_MEASUREMENT_ID` / `PLAUSIBLE_DOMAIN` in the
+  cPanel Python-App env and restart. GA4 also needs a cookie-consent banner under
+  Indonesian PDP law before it should load.
 - **Business directories & NAP consistency** — list the company on Indonesian
   B2B directories (Indotrading, Indonetwork, etc.) with the *exact* same Name,
   Address, Phone. Inconsistent NAP dilutes local ranking.
@@ -91,8 +117,8 @@ and what still needs client input or a later phase.
   lines up with `REVAMP-DJANGO-CPANEL.md` step 5.
 - **Blog / artikel** section for informational queries
   ("biaya sewa lowboy", "cara mobilisasi excavator") — top-of-funnel traffic.
-- **Image pipeline** — serve WebP/AVIF with `<picture>`, compress the JPEGs
-  (hero is the LCP asset), add descriptive filenames.
+- **AVIF** — add a second `<source type="image/avif">` for another ~20-30% off
+  the photos (WebP already done, §1).
 - **Breadcrumbs** + `BreadcrumbList` schema once there is more than one page.
 - **`hreflang`** only if an English version is ever added (currently `id` only).
 - **Performance budget** — inline critical CSS or `media`-split the stylesheet;

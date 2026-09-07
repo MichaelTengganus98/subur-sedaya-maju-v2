@@ -111,7 +111,7 @@
 				</ul>
 			</div>
 			<div class="hero-media reveal">
-				<img src="{% static 'images/hero-truck.jpeg' %}" alt="Armada trailer PT Subur Sedaya Maju mengangkut alat berat" width="1200" height="900" fetchpriority="high" decoding="async">
+				{% include 'partials/_picture.html' with src='images/hero-truck.jpeg' alt='Armada trailer PT Subur Sedaya Maju mengangkut alat berat' width=1200 height=900 loading='eager' fetchpriority='high' %}
 			</div>
 		</div>
 	</section>
@@ -286,7 +286,7 @@
 				<p>Memberikan pelayanan terbaik kepada pengguna jasa, yang meliputi mutu dan ketepatan waktu, dengan tetap mengutamakan keselamatan kerja, kesehatan kerja, serta perlindungan lingkungan.</p>
 			</div>
 			<div class="media reveal">
-				<img src="{% static 'images/visi-photo.png' %}" alt="Operasional PT Subur Sedaya Maju" width="1024" height="697" loading="lazy">
+				{% include 'partials/_picture.html' with src='images/visi-photo.png' alt='Operasional PT Subur Sedaya Maju' width=1024 height=697 %}
 			</div>
 		</div>
 	</section>
@@ -300,7 +300,7 @@
 			<div class="fleet-grid">
 				<div class="fleet-card reveal">
 					<div class="fleet-media">
-						<img src="{% static 'images/hero-truck.jpeg' %}" alt="Self-loader truck PT Subur Sedaya Maju mengangkut crawler crane" loading="lazy">
+						{% include 'partials/_picture.html' with src='images/hero-truck.jpeg' alt='Self-loader truck PT Subur Sedaya Maju mengangkut crawler crane' %}
 					</div>
 					<h3>Self-Loader Truck</h3>
 					<p>Truk dengan sistem muat-bongkar mandiri untuk memuat dan menurunkan alat berat tanpa crane bantu.</p>
@@ -323,7 +323,7 @@
 				</div>
 				<div class="fleet-card reveal">
 					<div class="fleet-media">
-						<img src="{% static 'images/partner-photo.png' %}" alt="Crawler crane dan alat berat di pool PT Subur Sedaya Maju" loading="lazy">
+						{% include 'partials/_picture.html' with src='images/partner-photo.png' alt='Crawler crane dan alat berat di pool PT Subur Sedaya Maju' %}
 					</div>
 					<h3>Crawler Crane 25 – 260 Ton</h3>
 					<p>Sewa crane crawler kapasitas 25 T hingga 260 T untuk pengangkatan dan penempatan beban berat.</p>
@@ -338,7 +338,7 @@
 				</div>
 				<div class="fleet-card reveal">
 					<div class="fleet-media">
-						<img src="{% static 'images/mitra-photo.jpeg' %}" alt="Wheel loader dan alat berat pendukung PT Subur Sedaya Maju" loading="lazy">
+						{% include 'partials/_picture.html' with src='images/mitra-photo.jpeg' alt='Wheel loader dan alat berat pendukung PT Subur Sedaya Maju' %}
 					</div>
 					<h3>Alat Berat Pendukung</h3>
 					<p>Wheel loader, motor grader, dozer, vibro, hiab crane, dan unit excavator untuk kebutuhan di lokasi.</p>
@@ -350,7 +350,7 @@
 	<section class="partners section section-tint" id="our-partner">
 		<div class="container two-col">
 			<div class="media reveal">
-				<img src="{% static 'images/partner-photo.png' %}" alt="Kemitraan PT Subur Sedaya Maju" width="1024" height="692" loading="lazy">
+				{% include 'partials/_picture.html' with src='images/partner-photo.png' alt='Kemitraan PT Subur Sedaya Maju' width=1024 height=692 %}
 			</div>
 			<div class="reveal">
 				<span class="kicker">Partner Kami</span>
