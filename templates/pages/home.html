@@ -251,20 +251,54 @@
 		<div class="container">
 			<div class="head-row reveal">
 				<h2 class="section-title">Armada yang Siap Melayani Kebutuhan Anda</h2>
-				<p>Foto dan spesifikasi di bawah adalah placeholder — lengkapi dengan foto dan data armada aktual perusahaan.</p>
+				<p>Unit angkut dan alat berat pendukung yang kami operasikan untuk proyek tambang, konstruksi, dan energi.</p>
 			</div>
-			<p class="placeholder-note reveal">PLACEHOLDER — ganti dengan foto dan spesifikasi armada asli.</p>
 			<div class="fleet-grid">
-				{% for i in "123456" %}
 				<div class="fleet-card reveal">
-					<div class="placeholder-media">
-						<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="1"></rect><path d="M3 13l4-4 4 4 5-6 5 6"></path></svg>
-						<span>Foto Armada</span>
+					<div class="fleet-media">
+						<img src="{% static 'images/hero-truck.jpeg' %}" alt="Self-loader truck PT Subur Sedaya Maju mengangkut crawler crane" loading="lazy">
 					</div>
-					<h4 class="placeholder-copy">Nama / Jenis Armada</h4>
-					<p class="placeholder-copy">Deskripsi singkat kapasitas dan spesifikasi armada.</p>
+					<h4>Self-Loader Truck</h4>
+					<p>Truk dengan sistem muat-bongkar mandiri untuk memuat dan menurunkan alat berat tanpa crane bantu.</p>
 				</div>
-				{% endfor %}
+				<div class="fleet-card reveal">
+					<div class="fleet-tile">
+						<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15h13V9h4l3 4v2h-2"></path><path d="M2 15V8h9"></path><circle cx="6" cy="18" r="2"></circle><circle cx="18" cy="18" r="2"></circle></svg>
+						<span>Lowboy / Lowbed Trailer</span>
+					</div>
+					<h4>Lowboy (Lowbed Trailer)</h4>
+					<p>Deck rendah untuk excavator, dozer, dan muatan over-dimension dengan titik berat tinggi.</p>
+				</div>
+				<div class="fleet-card reveal">
+					<div class="fleet-tile">
+						<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 16h22"></path><path d="M3 16V12h10l3 4"></path><circle cx="6" cy="19" r="2"></circle><circle cx="13" cy="19" r="2"></circle><circle cx="19" cy="19" r="2"></circle></svg>
+						<span>Trailer &amp; Dolly</span>
+					</div>
+					<h4>Trailer &amp; Dolly</h4>
+					<p>Kombinasi trailer dan dolly untuk muatan panjang serta distribusi beban antar sumbu.</p>
+				</div>
+				<div class="fleet-card reveal">
+					<div class="fleet-media">
+						<img src="{% static 'images/partner-photo.png' %}" alt="Crawler crane dan alat berat di pool PT Subur Sedaya Maju" loading="lazy">
+					</div>
+					<h4>Crawler Crane 25 – 260 Ton</h4>
+					<p>Sewa crane crawler kapasitas 25 T hingga 260 T untuk pengangkatan dan penempatan beban berat.</p>
+				</div>
+				<div class="fleet-card reveal">
+					<div class="fleet-tile">
+						<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h11v-5H8l-3 3H3z"></path><path d="M14 12l3-4h3v9h-6"></path><circle cx="7" cy="19" r="2"></circle><circle cx="17" cy="19" r="2"></circle></svg>
+						<span>Dump Truck</span>
+					</div>
+					<h4>Dump Truck</h4>
+					<p>Angkutan material curah dan pendukung mobilisasi proyek di area tambang dan konstruksi.</p>
+				</div>
+				<div class="fleet-card reveal">
+					<div class="fleet-media">
+						<img src="{% static 'images/mitra-photo.jpeg' %}" alt="Wheel loader dan alat berat pendukung PT Subur Sedaya Maju" loading="lazy">
+					</div>
+					<h4>Alat Berat Pendukung</h4>
+					<p>Wheel loader, motor grader, dozer, vibro, hiab crane, dan unit excavator untuk kebutuhan di lokasi.</p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -300,20 +334,12 @@
 		<div class="container">
 			<div class="head-row reveal">
 				<h2 class="section-title">Apa Kata Mitra Kami</h2>
-				<p>Kutipan di bawah adalah placeholder — ganti dengan testimoni nyata dari klien Anda.</p>
+				<p>Lebih dari 50 perusahaan di sektor tambang, konstruksi, dan energi mempercayakan mobilisasi alat berat mereka kepada kami sejak 2006.</p>
 			</div>
-			<p class="placeholder-note reveal">PLACEHOLDER — ganti dengan testimoni klien asli.</p>
-			<div class="testimonial-grid">
-				{% for i in "123" %}
-				<div class="testimonial-card reveal">
-					<div class="placeholder-media-circle">
-						<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-					</div>
-					<p class="testimonial-quote placeholder-copy">“Tulis kutipan testimoni klien di sini.”</p>
-					<h5 class="placeholder-copy">Nama Klien</h5>
-					<span class="placeholder-copy placeholder-copy-sm">Jabatan, Nama Perusahaan</span>
-				</div>
-				{% endfor %}
+			<div class="reviews-panel reveal">
+				<div class="reviews-tag">ULASAN GOOGLE BISNIS</div>
+				<p>Baca pengalaman pelanggan yang telah bekerja sama dengan PT Subur Sedaya Maju langsung dari ulasan Google Bisnis kami.</p>
+				<a href="https://www.google.com/maps/search/?api=1&query=PT+Subur+Sedaya+Maju+Prabumulih" class="btn btn-outline" target="_blank" rel="noopener">Lihat Ulasan di Google Maps</a>
 			</div>
 		</div>
 	</section>
@@ -321,19 +347,38 @@
 	<section class="certifications section section-tint" id="legalitas">
 		<div class="container">
 			<div class="head-row reveal">
-				<h2 class="section-title">Legalitas dan Standar yang Kami Penuhi</h2>
-				<p>Lambang di bawah adalah placeholder — lengkapi dengan legalitas resmi perusahaan (mis. NIB/SIUP, SMK3, ISO).</p>
+				<h2 class="section-title">Dasar Kepercayaan Pelanggan Kami</h2>
+				<p>Fondasi legalitas dan operasional yang menjadi alasan perusahaan mempercayakan alat berat mereka kepada kami.</p>
 			</div>
-			<p class="placeholder-note reveal">PLACEHOLDER — ganti dengan sertifikasi / legalitas resmi.</p>
 			<div class="cert-grid">
-				{% for i in "1234" %}
 				<div class="cert-badge reveal">
-					<div class="placeholder-media-sq">
+					<div class="cert-icon">
 						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"></path></svg>
 					</div>
-					<span class="placeholder-copy placeholder-copy-sm">Nama Sertifikasi</span>
+					<h4>Badan Hukum PT</h4>
+					<span>Perseroan Terbatas resmi berdomisili di Prabumulih, Sumatera Selatan</span>
 				</div>
-				{% endfor %}
+				<div class="cert-badge reveal">
+					<div class="cert-icon">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+					</div>
+					<h4>Beroperasi Sejak 2006</h4>
+					<span>Hampir dua dekade pengalaman mobilisasi alat berat</span>
+				</div>
+				<div class="cert-badge reveal">
+					<div class="cert-icon">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+					</div>
+					<h4>Komitmen K3 / SMK3</h4>
+					<span>Keselamatan dan kesehatan kerja sebagai prioritas utama di setiap proyek</span>
+				</div>
+				<div class="cert-badge reveal">
+					<div class="cert-icon">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+					</div>
+					<h4>Bengkel Pemeliharaan Sendiri</h4>
+					<span>Perawatan armada in-house dengan suku cadang dan tenaga terampil</span>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -345,10 +390,12 @@
 				<p>Basis operasional kami di Sumatera Selatan, dengan kemampuan menjangkau wilayah lain sesuai kebutuhan proyek.</p>
 			</div>
 			<div class="coverage-chips reveal">
-				<span class="chip">Sumatera Selatan</span>
-				<span class="chip chip-placeholder">+ Tambah Wilayah</span>
-				<span class="chip chip-placeholder">+ Tambah Wilayah</span>
-				<span class="chip chip-placeholder">+ Tambah Wilayah</span>
+				<span class="chip">Sumatera Selatan — Basis Operasional</span>
+				<span class="chip chip-line">Prabumulih</span>
+				<span class="chip chip-line">Palembang</span>
+				<span class="chip chip-line">Muara Enim</span>
+				<span class="chip chip-line">Lahat</span>
+				<span class="chip chip-line">Jangkauan Nasional — Sesuai Kebutuhan Proyek</span>
 			</div>
 		</div>
 	</section>
@@ -362,7 +409,7 @@
 			<div class="faq-list reveal">
 				<details class="faq-item">
 					<summary>Wilayah mana saja yang dilayani oleh PT Subur Sedaya Maju?</summary>
-					<p class="placeholder-copy">Placeholder — mohon lengkapi cakupan wilayah layanan secara rinci.</p>
+					<p>Basis operasional kami di Prabumulih, Sumatera Selatan, dan kami rutin melayani proyek tambang, konstruksi, serta energi di seluruh wilayah Sumatera Selatan. Pengiriman ke wilayah lain di Indonesia dapat dilayani sesuai kebutuhan proyek.</p>
 				</details>
 				<details class="faq-item">
 					<summary>Bagaimana proses pemesanan jasa transportasi alat berat?</summary>
@@ -370,11 +417,11 @@
 				</details>
 				<details class="faq-item">
 					<summary>Apakah tersedia asuransi untuk pengiriman alat berat?</summary>
-					<p class="placeholder-copy">Placeholder — mohon lengkapi kebijakan asuransi pengiriman.</p>
+					<p>Kebutuhan asuransi pengiriman dibahas pada tahap konsultasi dan disesuaikan dengan nilai, jenis, serta rute alat berat Anda. Tim kami akan membantu menyiapkan opsi perlindungan yang sesuai.</p>
 				</details>
 				<details class="faq-item">
 					<summary>Berapa lama estimasi waktu pengiriman?</summary>
-					<p class="placeholder-copy">Placeholder — mohon lengkapi estimasi waktu berdasarkan jarak/rute.</p>
+					<p>Estimasi waktu ditentukan setelah survei rute karena bergantung pada jarak, kondisi jalan, proses perizinan, dan dimensi muatan. Anda akan menerima perkiraan jadwal setelah konsultasi dan survei awal.</p>
 				</details>
 			</div>
 		</div>

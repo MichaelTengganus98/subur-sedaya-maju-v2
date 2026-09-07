@@ -1,35 +1,46 @@
-# Content TODO — Placeholders on the Live Site
+# Content TODO
 
-These sections currently ship with placeholder copy (the site itself labels most
-of them with a `placeholder-note`). Collect real content from the client before
-or during the revamp.
+Status of content on the `revamp/django-cpanel` home page. The visible
+"this is placeholder" disclaimers have been removed; the items below are where
+**real client-supplied material would still improve** what's shown.
 
-## Fleet / Armada (`#armada`)
-- 6 cards, all placeholder.
-- Needed per unit: photo, name / type, capacity, key specs.
-- Site note: *"Foto dan spesifikasi di bawah ini adalah placeholder — silakan lengkapi dengan foto dan data armada aktual perusahaan."*
+## Fleet / Armada (`#armada`) — filled, photos pending
+- 6 cards now name real unit types with specs sourced from public company
+  info: Self-Loader Truck, Lowboy (Lowbed Trailer), Trailer & Dolly,
+  Crawler Crane 25–260 T, Dump Truck, Alat Berat Pendukung.
+- 3 cards reuse the company's own photos (`hero-truck`, `partner-photo`,
+  `mitra-photo`); 3 use a neutral equipment tile.
+- **Still ideal:** a real photo + exact spec sheet per unit from the client
+  (tonnage, dimensions, plate/asset count).
 
-## Testimonials / Testimoni (`#testimoni`)
-- 3 placeholder cards.
-- Needed per testimonial: quote, client name, role + company, (optional) photo.
+## Testimonials / Testimoni (`#testimoni`) — replaced with Google reviews CTA
+- No public client testimonials exist, so the fake quote cards were removed.
+- Section now points to the company's Google Business reviews.
+- **Still ideal:** 2–3 real, attributed client quotes (name, role, company,
+  with permission) to show inline instead of / alongside the CTA.
 
-## Certifications / Legalitas (`#legalitas`)
-- 4 placeholder badges.
-- Needed: actual company legal docs / certifications and their logos, e.g. SIUP / NIB, SMK3 (K3), ISO 9001 / 45001, association membership.
+## Certifications / Legalitas (`#legalitas`) — reframed to verifiable facts
+- Fake "Nama Sertifikasi" badges removed. Now 4 real attributes:
+  Badan Hukum PT · Beroperasi Sejak 2006 · Komitmen K3/SMK3 ·
+  Bengkel Pemeliharaan Sendiri.
+- **Still ideal:** if the company holds NIB/SIUP, SMK3, ISO 9001/45001, or
+  association membership, add the real certificate names + logos.
 
-## Coverage / Wilayah Layanan (`#wilayah`)
-- Only "Sumatera Selatan" is real; 3 "+ Tambahkan Wilayah" chips are placeholder.
-- Needed: the real list of provinces / regions served, and whether the "seluruh Indonesia" claim in the footer is accurate.
+## Coverage / Wilayah (`#wilayah`) — filled
+- Chips: Sumatera Selatan (basis operasional) + Prabumulih, Palembang,
+  Muara Enim, Lahat + "Jangkauan Nasional — sesuai kebutuhan proyek".
+- **Verify with client:** that these regencies are actually served, and
+  whether the footer's "seluruh Indonesia" claim is accurate.
 
-## FAQ (`#faq`)
-Real answer already written for: *"Bagaimana proses pemesanan jasa transportasi alat berat?"*
-
-Placeholder answers still needed for:
-- "Wilayah mana saja yang dilayani oleh PT Subur Sedaya Maju?"
-- "Apakah tersedia asuransi untuk pengiriman alat berat?"
-- "Berapa lama estimasi waktu pengiriman?"
+## FAQ (`#faq`) — filled
+- All four answers written (wilayah, proses pemesanan, asuransi, estimasi
+  waktu). The asuransi and estimasi answers are deliberately non-committal —
+  **replace with the company's actual policy** once confirmed.
 
 ## Other content fixes
-- Contact form labels are in English ("First Name", "Last Name", …) — translate to Indonesian for consistency.
-- Confirm the "20+ tahun" figure (site established 2006 → 2026 is ~20 years; keep the counter logic or hard-code).
-- Decide whether the contact form should actually send email server-side (see `REVAMP-DJANGO-CPANEL.md`).
+- ~~Contact form labels English → Indonesian~~ — done.
+- Confirm the "20+ tahun" figure (2006 → 2026 ≈ 20 years).
+- Decide whether the contact form should send email server-side (see
+  `REVAMP-DJANGO-CPANEL.md` §4).
+- Replace the reused hero/partner/mitra photos in the Fleet section once
+  dedicated unit photos exist, so no image appears twice on the page.
