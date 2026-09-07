@@ -1,0 +1,42 @@
+# ===== OS / editor =====
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# ===== Python / Django (used by the revamp branch) =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.log
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Django
+*.sqlite3
+db.sqlite3
+/staticfiles/
+/media/
+local_settings.py
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+secrets.json
+
+# Node (if a build step is added later)
+node_modules/
+npm-debug.log*
