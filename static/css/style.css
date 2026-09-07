@@ -249,11 +249,8 @@ h1,h2,h3,h4,h5{ font-family:var(--head); font-weight:700; line-height:1.2; }
 .hero-lede{ font-size:17px; color:var(--concrete-2); max-width:46ch; margin-bottom:32px; }
 .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px; }
 
-.hero-trust{ display:flex; border-top:1px solid var(--line-dark); }
-.hero-trust li{
-  flex:1; padding:20px 20px 0 0; border-right:1px solid var(--line-dark);
-}
-.hero-trust li:last-child{ border-right:none; padding-right:0; }
+.hero-trust{ display:flex; gap:36px; border-top:1px solid var(--line-dark); }
+.hero-trust li{ flex:1; padding-top:20px; }
 .hero-trust .stat-number,
 .hero-trust b{
   display:block; font-family:var(--display); font-weight:800; font-stretch:expanded;
