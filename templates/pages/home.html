@@ -1,0 +1,577 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<a class="skip-link" href="#main-content">Langsung ke konten</a>
+
+<header class="site-header" id="site-header">
+	<div class="container header-inner">
+		<a href="#top" class="brand">
+			<img src="{% static 'images/logo-horizontal.png' %}" alt="PT. Subur Sedaya Maju" width="826" height="154">
+		</a>
+
+		<nav id="primary-nav" class="site-nav">
+			<ul>
+				<li><a href="#about-us">Tentang Kami</a></li>
+				<li><a href="#layanan">Layanan</a></li>
+				<li><a href="#our-partner">Partner Kami</a></li>
+				<li><a href="#contact-us">Hubungi Kami</a></li>
+			</ul>
+			<div class="nav-contact">
+				<a href="https://wa.me/6282185576869" class="nav-phone" target="_blank" rel="noopener">
+					<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+					<span>0821-8557-6869</span>
+				</a>
+				<a href="#contact-us" class="btn btn-primary nav-cta">Hubungi Kami</a>
+			</div>
+		</nav>
+
+		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Buka menu">
+			<span></span><span></span><span></span>
+		</button>
+	</div>
+</header>
+
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<main id="top">
+
+	<section class="hero" id="main-content">
+		<div class="hero-media-bg">
+			<img src="{% static 'images/hero-truck.jpeg' %}" alt="" role="presentation">
+		</div>
+		<div class="container hero-content">
+			<p class="eyebrow reveal">Perusahaan Transportasi Alat Berat Terpercaya</p>
+			<h1 class="reveal">PT Subur Sedaya Maju<br>Sejak 2006</h1>
+			<p class="hero-lede reveal">Solusi transportasi alat berat yang aman, andal, dan tepat waktu — didukung armada modern, pengemudi terlatih, dan tim profesional yang fokus pada keselamatan kerja.</p>
+			<div class="hero-actions reveal">
+				<a href="#contact-us" class="btn btn-primary btn-lg">Hubungi Kami</a>
+				<a href="#layanan" class="btn btn-outline btn-lg">Lihat Layanan Kami</a>
+			</div>
+			<ul class="hero-trust reveal">
+				<li>
+					<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+					20+ Tahun Pengalaman
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+					50+ Perusahaan Mitra
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+					Keselamatan Kerja Prioritas Utama
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="services" id="layanan">
+		<div class="container">
+			<span class="kicker reveal">Layanan Kami</span>
+			<h2 class="section-title reveal">Solusi Transportasi Alat Berat Terintegrasi</h2>
+			<div class="services-grid">
+				<div class="service-card reveal">
+					<div class="service-icon">
+						<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+					</div>
+					<h3>Pengangkutan Alat Berat</h3>
+					<p>Layanan transportasi alat berat dan peralatan konstruksi dengan armada truk modern yang dirancang untuk beban dan medan berat.</p>
+				</div>
+				<div class="service-card reveal">
+					<div class="service-icon">
+						<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+					</div>
+					<h3>Pengangkutan Muatan Besar</h3>
+					<p>Penanganan muatan berdimensi dan berbobot besar (over-dimension cargo) dengan perencanaan rute dan pengamanan yang matang.</p>
+				</div>
+				<div class="service-card reveal">
+					<div class="service-icon">
+						<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+					</div>
+					<h3>Peralatan Industri &amp; Konstruksi</h3>
+					<p>Distribusi peralatan industri dan material konstruksi ke lokasi proyek di seluruh Indonesia secara aman dan tepat waktu.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="stats">
+		<div class="container stats-grid">
+			<div class="stat-card reveal">
+				<span class="stat-number" data-count="20">0</span><span class="stat-suffix">+</span>
+				<p>Tahun Pengalaman</p>
+			</div>
+			<div class="stat-card reveal">
+				<span class="stat-number" data-count="50">0</span><span class="stat-suffix">+</span>
+				<p>Perusahaan Mitra</p>
+			</div>
+			<div class="stat-card reveal">
+				<span class="stat-number" data-count="2006">0</span>
+				<p>Berdiri Sejak</p>
+			</div>
+			<div class="stat-card stat-icon-card reveal">
+				<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+				<p>K3 Sebagai Prioritas Utama</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="why-us">
+		<div class="container">
+			<span class="kicker reveal">Kenapa Kami</span>
+			<h2 class="section-title reveal">Keunggulan yang Bisa Anda Andalkan</h2>
+			<div class="info-grid">
+				<div class="info-box reveal">
+					<div class="info-icon">
+						<img src="{% static 'images/icon-teknisi.png' %}" alt="">
+					</div>
+					<h4>Teknisi Berpengalaman</h4>
+					<p>Tim teknisi terlatih memastikan setiap armada siap beroperasi dengan standar keamanan tertinggi.</p>
+				</div>
+				<div class="info-box reveal">
+					<div class="info-icon">
+						<img src="{% static 'images/icon-kualitas.png' %}" alt="">
+					</div>
+					<h4>Kualitas Produk Baik</h4>
+					<p>Peralatan dan suku cadang yang digunakan memenuhi standar kualitas untuk menjaga performa armada.</p>
+				</div>
+				<div class="info-box reveal">
+					<div class="info-icon">
+						<img src="{% static 'images/icon-kondisi.png' %}" alt="">
+					</div>
+					<h4>Kondisi Terawat</h4>
+					<p>Program perawatan rutin menjaga setiap unit dalam kondisi optimal dan siap pakai.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="process" id="proses">
+		<div class="container">
+			<span class="kicker reveal">Proses Kerja</span>
+			<h2 class="section-title reveal">Bagaimana Kami Bekerja</h2>
+			<div class="process-grid">
+				<div class="process-step reveal">
+					<span class="process-number">1</span>
+					<div class="process-icon">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+					</div>
+					<h4>Konsultasi Kebutuhan</h4>
+					<p>Diskusikan jenis alat berat, dimensi muatan, dan tujuan pengiriman bersama tim kami.</p>
+				</div>
+				<div class="process-step reveal">
+					<span class="process-number">2</span>
+					<div class="process-icon">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+					</div>
+					<h4>Survei &amp; Perencanaan Rute</h4>
+					<p>Tim kami melakukan survei lokasi dan menyusun rencana rute serta pengamanan yang sesuai.</p>
+				</div>
+				<div class="process-step reveal">
+					<span class="process-number">3</span>
+					<div class="process-icon">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+					</div>
+					<h4>Proses Pengiriman</h4>
+					<p>Pengangkutan dilaksanakan oleh pengemudi berpengalaman dengan armada yang telah disiapkan.</p>
+				</div>
+				<div class="process-step reveal">
+					<span class="process-number">4</span>
+					<div class="process-icon">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+					</div>
+					<h4>Dukungan Purna Pengiriman</h4>
+					<p>Kami memastikan alat berat tiba dengan aman dan siap dioperasikan di lokasi tujuan.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="about" id="about-us">
+		<div class="container two-col">
+			<div class="reveal">
+				<span class="kicker">Tentang Kami</span>
+				<h2>Misi Kami</h2>
+				<p>Merawat peralatan agar selalu dalam kondisi baik dengan menyediakan tempat pemeliharaan (bengkel) yang dilengkapi dengan tenaga kerja yang terampil, serta peralatan kerja, material, dan suku cadang dalam jumlah yang sesuai dengan standar.</p>
+				<p>Membina pekerja untuk membentuk moral berstandar tinggi agar memahami etika, sopan santun, bersikap komunikatif dan informatif, serta bertanggung jawab, sehingga tercipta hubungan kerja yang harmonis.</p>
+			</div>
+			<div class="safety-card reveal">
+				<h3>Menciptakan kondisi kerja yang aman dan selamat dengan:</h3>
+				<ul class="check-list">
+					<li>
+						<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+						Melakukan pemeliharaan tempat kerja agar tetap bersih dan nyaman.
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+						Menyediakan APD (Alat Pelindung Diri) secara cuma-cuma yang sesuai dengan standar keselamatan.
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+						Menyediakan peralatan/perlengkapan kerja dalam kondisi baik dan memenuhi standar keselamatan.
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+						Membina sikap pekerja agar memiliki perilaku yang berorientasi pada keselamatan.
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+						Melaksanakan program-program keselamatan, kesehatan kerja, dan lingkungan.
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="vision">
+		<div class="container two-col reverse-mobile">
+			<div class="media reveal">
+				<img src="{% static 'images/visi-photo.png' %}" alt="Operasional PT Subur Sedaya Maju" width="1024" height="697" loading="lazy">
+			</div>
+			<div class="reveal">
+				<span class="kicker">Visi Kami</span>
+				<h2>Pelayanan Terbaik, Keselamatan Utama</h2>
+				<p>Memberikan pelayanan terbaik kepada pengguna jasa, yang meliputi mutu dan ketepatan waktu, dengan tetap mengutamakan keselamatan kerja, kesehatan kerja, serta perlindungan lingkungan.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="fleet" id="armada">
+		<div class="container">
+			<span class="kicker reveal">Armada Kami</span>
+			<h2 class="section-title reveal">Armada yang Siap Melayani Kebutuhan Anda</h2>
+			<p class="placeholder-note reveal">Foto dan spesifikasi di bawah ini adalah placeholder — silakan lengkapi dengan foto dan data armada aktual perusahaan.</p>
+			<div class="fleet-grid">
+				<div class="fleet-card reveal">
+					<div class="placeholder-media">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"></rect><path d="M3 13l4-4 4 4 5-6 5 6"></path></svg>
+						<span>Foto Armada</span>
+					</div>
+					<h4 class="placeholder-copy">Nama / Jenis Armada</h4>
+					<p class="placeholder-copy">Deskripsi singkat kapasitas dan spesifikasi armada.</p>
+				</div>
+				<div class="fleet-card reveal">
+					<div class="placeholder-media">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"></rect><path d="M3 13l4-4 4 4 5-6 5 6"></path></svg>
+						<span>Foto Armada</span>
+					</div>
+					<h4 class="placeholder-copy">Nama / Jenis Armada</h4>
+					<p class="placeholder-copy">Deskripsi singkat kapasitas dan spesifikasi armada.</p>
+				</div>
+				<div class="fleet-card reveal">
+					<div class="placeholder-media">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"></rect><path d="M3 13l4-4 4 4 5-6 5 6"></path></svg>
+						<span>Foto Armada</span>
+					</div>
+					<h4 class="placeholder-copy">Nama / Jenis Armada</h4>
+					<p class="placeholder-copy">Deskripsi singkat kapasitas dan spesifikasi armada.</p>
+				</div>
+				<div class="fleet-card reveal">
+					<div class="placeholder-media">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"></rect><path d="M3 13l4-4 4 4 5-6 5 6"></path></svg>
+						<span>Foto Armada</span>
+					</div>
+					<h4 class="placeholder-copy">Nama / Jenis Armada</h4>
+					<p class="placeholder-copy">Deskripsi singkat kapasitas dan spesifikasi armada.</p>
+				</div>
+				<div class="fleet-card reveal">
+					<div class="placeholder-media">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"></rect><path d="M3 13l4-4 4 4 5-6 5 6"></path></svg>
+						<span>Foto Armada</span>
+					</div>
+					<h4 class="placeholder-copy">Nama / Jenis Armada</h4>
+					<p class="placeholder-copy">Deskripsi singkat kapasitas dan spesifikasi armada.</p>
+				</div>
+				<div class="fleet-card reveal">
+					<div class="placeholder-media">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"></rect><path d="M3 13l4-4 4 4 5-6 5 6"></path></svg>
+						<span>Foto Armada</span>
+					</div>
+					<h4 class="placeholder-copy">Nama / Jenis Armada</h4>
+					<p class="placeholder-copy">Deskripsi singkat kapasitas dan spesifikasi armada.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="partners" id="our-partner">
+		<div class="container two-col">
+			<div class="media reveal">
+				<img src="{% static 'images/partner-photo.png' %}" alt="Kemitraan PT Subur Sedaya Maju" width="1024" height="692" loading="lazy">
+			</div>
+			<div class="reveal">
+				<span class="kicker">Partner Kami</span>
+				<h2>Lebih dari 50 perusahaan mempercayai kami sebagai mitra andalan mereka.</h2>
+				<p>Kami bangga menjadi bagian dari banyak kisah sukses dengan memberikan solusi terbaik dan berkualitas kepada klien kami.</p>
+				<a href="#contact-us" class="btn btn-primary">Hubungi Kami</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="lifetime-partner">
+		<div class="container two-col reverse-mobile">
+			<div class="reveal">
+				<span class="kicker">Komitmen Kami</span>
+				<h2>Mitra Bisnis Seumur Hidup</h2>
+				<p>Menggambarkan komitmen kami dalam menjalin kemitraan jangka panjang yang saling menguntungkan. Sebagai perusahaan jasa transportasi alat berat yang berfokus pada keselamatan, kami menghadirkan solusi terbaik dan inovatif untuk memenuhi kebutuhan transportasi alat berat Anda.</p>
+				<a href="#contact-us" class="btn btn-primary">Hubungi Kami</a>
+			</div>
+			<div class="media reveal">
+				<img src="{% static 'images/mitra-photo.jpeg' %}" alt="Tim PT Subur Sedaya Maju" width="1024" height="768" loading="lazy">
+			</div>
+		</div>
+	</section>
+
+	<section class="testimonials" id="testimoni">
+		<div class="container">
+			<span class="kicker reveal">Testimoni</span>
+			<h2 class="section-title reveal">Apa Kata Mitra Kami</h2>
+			<p class="placeholder-note reveal">Kutipan di bawah ini adalah placeholder — silakan ganti dengan testimoni nyata dari klien Anda.</p>
+			<div class="testimonial-grid">
+				<div class="testimonial-card reveal">
+					<div class="placeholder-media-circle">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+					</div>
+					<p class="testimonial-quote placeholder-copy">&ldquo;Tulis kutipan testimoni klien di sini.&rdquo;</p>
+					<h5 class="placeholder-copy">Nama Klien</h5>
+					<span class="placeholder-copy placeholder-copy-sm">Jabatan, Nama Perusahaan</span>
+				</div>
+				<div class="testimonial-card reveal">
+					<div class="placeholder-media-circle">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+					</div>
+					<p class="testimonial-quote placeholder-copy">&ldquo;Tulis kutipan testimoni klien di sini.&rdquo;</p>
+					<h5 class="placeholder-copy">Nama Klien</h5>
+					<span class="placeholder-copy placeholder-copy-sm">Jabatan, Nama Perusahaan</span>
+				</div>
+				<div class="testimonial-card reveal">
+					<div class="placeholder-media-circle">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+					</div>
+					<p class="testimonial-quote placeholder-copy">&ldquo;Tulis kutipan testimoni klien di sini.&rdquo;</p>
+					<h5 class="placeholder-copy">Nama Klien</h5>
+					<span class="placeholder-copy placeholder-copy-sm">Jabatan, Nama Perusahaan</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="certifications" id="legalitas">
+		<div class="container">
+			<span class="kicker reveal">Sertifikasi &amp; Legalitas</span>
+			<h2 class="section-title reveal">Legalitas dan Standar yang Kami Penuhi</h2>
+			<p class="placeholder-note reveal">Lambang sertifikasi di bawah ini adalah placeholder — silakan lengkapi dengan sertifikasi/legalitas resmi perusahaan (mis. SIUP, K3/SMK3, ISO).</p>
+			<div class="cert-grid">
+				<div class="cert-badge reveal">
+					<div class="placeholder-media placeholder-media-sq">
+						<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"></path></svg>
+					</div>
+					<span class="placeholder-copy placeholder-copy-sm">Nama Sertifikasi</span>
+				</div>
+				<div class="cert-badge reveal">
+					<div class="placeholder-media placeholder-media-sq">
+						<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"></path></svg>
+					</div>
+					<span class="placeholder-copy placeholder-copy-sm">Nama Sertifikasi</span>
+				</div>
+				<div class="cert-badge reveal">
+					<div class="placeholder-media placeholder-media-sq">
+						<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"></path></svg>
+					</div>
+					<span class="placeholder-copy placeholder-copy-sm">Nama Sertifikasi</span>
+				</div>
+				<div class="cert-badge reveal">
+					<div class="placeholder-media placeholder-media-sq">
+						<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"></path></svg>
+					</div>
+					<span class="placeholder-copy placeholder-copy-sm">Nama Sertifikasi</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="coverage" id="wilayah">
+		<div class="container">
+			<span class="kicker reveal">Wilayah Layanan</span>
+			<h2 class="section-title reveal">Cakupan Wilayah Pengiriman</h2>
+			<p class="reveal">Saat ini kami melayani pengiriman dari basis operasional kami di Sumatera Selatan, dengan kemampuan menjangkau wilayah lain sesuai kebutuhan proyek.</p>
+			<div class="coverage-chips reveal">
+				<span class="chip">Sumatera Selatan</span>
+				<span class="chip chip-placeholder">+ Tambahkan Wilayah</span>
+				<span class="chip chip-placeholder">+ Tambahkan Wilayah</span>
+				<span class="chip chip-placeholder">+ Tambahkan Wilayah</span>
+			</div>
+		</div>
+	</section>
+
+	<section class="faq" id="faq">
+		<div class="container">
+			<span class="kicker reveal">FAQ</span>
+			<h2 class="section-title reveal">Pertanyaan yang Sering Diajukan</h2>
+			<div class="faq-list reveal">
+				<details class="faq-item">
+					<summary>Wilayah mana saja yang dilayani oleh PT Subur Sedaya Maju?</summary>
+					<p class="placeholder-copy">Placeholder — mohon lengkapi cakupan wilayah layanan secara rinci.</p>
+				</details>
+				<details class="faq-item">
+					<summary>Bagaimana proses pemesanan jasa transportasi alat berat?</summary>
+					<p>Anda dapat menghubungi tim kami melalui WhatsApp atau formulir kontak untuk konsultasi awal, dilanjutkan dengan survei dan perencanaan rute sebelum pengiriman dilaksanakan.</p>
+				</details>
+				<details class="faq-item">
+					<summary>Apakah tersedia asuransi untuk pengiriman alat berat?</summary>
+					<p class="placeholder-copy">Placeholder — mohon lengkapi kebijakan asuransi pengiriman.</p>
+				</details>
+				<details class="faq-item">
+					<summary>Berapa lama estimasi waktu pengiriman?</summary>
+					<p class="placeholder-copy">Placeholder — mohon lengkapi estimasi waktu berdasarkan jarak/rute.</p>
+				</details>
+			</div>
+		</div>
+	</section>
+
+	<section class="cta-banner">
+		<div class="container cta-banner-inner reveal">
+			<div>
+				<h2>Siap Bekerja Sama dengan Kami?</h2>
+				<p>Diskusikan kebutuhan transportasi alat berat Anda bersama tim kami — cepat, aman, dan tepat waktu.</p>
+			</div>
+			<div class="cta-banner-actions">
+				<a href="https://wa.me/6282185576869" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Chat via WhatsApp</a>
+				<a href="#contact-us" class="btn btn-outline-light btn-lg">Kirim Pesan</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="contact" id="contact-us">
+		<div class="container">
+			<span class="kicker reveal">Hubungi Kami</span>
+			<h2 class="section-title reveal">Mari Diskusikan Kebutuhan Anda</h2>
+			<div class="contact-grid">
+				<div class="contact-info reveal">
+					<div class="contact-info-item">
+						<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+						<div>
+							<h4>Alamat</h4>
+							<p>Jalur Pipa Pertamina, Patih Galung, Kec. Prabumulih Bar., Kota Prabumulih, Sumatera Selatan 31117</p>
+						</div>
+					</div>
+					<div class="contact-info-item">
+						<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+						<div>
+							<h4>Telepon / WhatsApp</h4>
+							<p><a href="https://wa.me/6282185576869">0821-8557-6869</a></p>
+						</div>
+					</div>
+					<div class="contact-info-item">
+						<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+						<div>
+							<h4>Email</h4>
+							<p><a href="mailto:admin@subursedayamaju.co.id">admin@subursedayamaju.co.id</a></p>
+						</div>
+					</div>
+					<div class="contact-info-item">
+						<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+						<div>
+							<h4>Jam Operasional</h4>
+							<p>Senin — Sabtu, 08.00 — 17.00 WIB</p>
+						</div>
+					</div>
+				</div>
+
+				<form id="contact-form" class="contact-form reveal">
+					<div class="form-row">
+						<div class="form-field">
+							<label for="first_name">First Name</label>
+							<input type="text" id="first_name" name="first_name" placeholder="First Name">
+						</div>
+						<div class="form-field">
+							<label for="last_name">Last Name</label>
+							<input type="text" id="last_name" name="last_name" placeholder="Last Name">
+						</div>
+					</div>
+					<div class="form-field">
+						<label for="email">Email <span class="required">*</span></label>
+						<input type="email" id="email" name="email" placeholder="Email Address" required>
+					</div>
+					<div class="form-field">
+						<label for="subject">Subject</label>
+						<input type="text" id="subject" name="subject" placeholder="Subject">
+					</div>
+					<div class="form-field">
+						<label for="phone">Phone Number <span class="required">*</span></label>
+						<input type="tel" id="phone" name="phone" inputmode="numeric" required>
+					</div>
+					<div class="form-field">
+						<label for="message">Your Message <span class="required">*</span></label>
+						<textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary btn-lg">Kirim Pesan</button>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<section class="location">
+		<div class="container">
+			<span class="kicker reveal">Lokasi</span>
+			<h2 class="section-title reveal">Kunjungi Kami</h2>
+			<div class="map-embed reveal">
+				<iframe
+					loading="lazy"
+					src="https://maps.google.com/maps?q=G6X8%2BXWJ%2C%20Jalur%20Pipa%20Pertamina%2C%20Patih%20Galung%2C%20Kec.%20Prabumulih%20Bar.%2C%20Kota%20Prabumulih%2C%20Sumatera%20Selatan%2031117&t=m&z=10&output=embed&iwloc=near"
+					title="Lokasi PT Subur Sedaya Maju"
+					aria-label="Lokasi PT Subur Sedaya Maju">
+				</iframe>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<a href="https://wa.me/6282185576869" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
+	<svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor" aria-hidden="true">
+		<path d="M16.004 3C9.107 3 3.5 8.607 3.5 15.5c0 2.29.617 4.437 1.69 6.285L3 29l7.41-2.144A12.44 12.44 0 0 0 16.004 28C22.9 28 28.5 22.393 28.5 15.5S22.9 3 16.004 3zm0 22.6c-1.98 0-3.83-.545-5.41-1.49l-.388-.23-4.4 1.273 1.246-4.29-.253-.404a10.06 10.06 0 0 1-1.588-5.46c0-5.577 4.532-10.11 10.113-10.11 5.578 0 10.11 4.533 10.11 10.11 0 5.578-4.532 10.11-10.113 10.11zm5.55-7.57c-.303-.152-1.792-.884-2.07-.986-.278-.102-.48-.152-.683.152-.202.303-.784.985-.96 1.187-.177.202-.354.227-.657.076-.303-.152-1.28-.472-2.438-1.505-.9-.803-1.508-1.795-1.685-2.098-.177-.303-.019-.467.133-.618.137-.136.303-.354.455-.53.152-.177.202-.303.303-.505.101-.202.05-.38-.025-.53-.076-.152-.683-1.645-.936-2.253-.247-.593-.498-.513-.683-.522-.177-.008-.38-.01-.582-.01-.202 0-.53.076-.808.38-.278.303-1.06 1.036-1.06 2.527 0 1.49 1.085 2.93 1.236 3.132.152.202 2.135 3.26 5.174 4.57.723.312 1.286.499 1.726.639.725.23 1.385.198 1.907.12.582-.087 1.792-.733 2.045-1.44.253-.708.253-1.314.177-1.44-.076-.127-.278-.202-.582-.354z"></path>
+	</svg>
+</a>
+
+<footer class="site-footer">
+	<div class="container footer-grid">
+		<div class="footer-brand">
+			<img src="{% static 'images/logo.png' %}" alt="PT. Subur Sedaya Maju" width="150" class="footer-logo">
+			<p>Perusahaan jasa transportasi dan penyewaan alat berat yang fokus pada keselamatan, melayani pelanggan di seluruh Indonesia sejak 2006.</p>
+		</div>
+		<div class="footer-col">
+			<h4>Tautan</h4>
+			<ul>
+				<li><a href="#about-us">Tentang Kami</a></li>
+				<li><a href="#layanan">Layanan</a></li>
+				<li><a href="#armada">Armada Kami</a></li>
+				<li><a href="#our-partner">Partner Kami</a></li>
+				<li><a href="#faq">FAQ</a></li>
+				<li><a href="#contact-us">Hubungi Kami</a></li>
+			</ul>
+		</div>
+		<div class="footer-col">
+			<h4>Layanan</h4>
+			<ul>
+				<li>Pengangkutan Alat Berat</li>
+				<li>Pengangkutan Muatan Besar</li>
+				<li>Peralatan Industri &amp; Konstruksi</li>
+			</ul>
+		</div>
+		<div class="footer-col">
+			<h4>Kontak</h4>
+			<ul class="footer-contact">
+				<li>Jalur Pipa Pertamina, Patih Galung, Kec. Prabumulih Bar., Kota Prabumulih, Sumatera Selatan 31117</li>
+				<li><a href="https://wa.me/6282185576869">0821-8557-6869</a></li>
+				<li><a href="mailto:admin@subursedayamaju.co.id">admin@subursedayamaju.co.id</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="container">
+			<p>&copy; <span id="year"></span> PT. Subur Sedaya Maju. All rights reserved.</p>
+		</div>
+	</div>
+</footer>
+{% endblock body %}

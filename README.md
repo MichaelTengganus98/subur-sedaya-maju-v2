@@ -35,9 +35,11 @@ website/
 | Branch | Purpose |
 |---|---|
 | `main` | The current, live static site + documentation |
-| `revamp/django-cpanel` | Rebuild of the site on Django, deployable via cPanel's "Setup Python App" (Passenger/WSGI). See `docs/REVAMP-DJANGO-CPANEL.md` on that branch. |
+| `revamp/django-cpanel` | Rebuild on Django 4.2 LTS (Python 3.8), deployable via cPanel's "Setup Python App" (Passenger/WSGI). Plan + local-run steps: `docs/REVAMP-DJANGO-CPANEL.md`. |
 
 ## Running locally
+
+### `main` (static site)
 
 No build step. Serve the folder with any static server:
 
@@ -45,3 +47,14 @@ No build step. Serve the folder with any static server:
 python -m http.server 8000
 # then open http://localhost:8000
 ```
+
+### `revamp/django-cpanel` (Django)
+
+```bash
+python3.8 -m venv .venv && .venv\Scripts\activate   # macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver        # http://127.0.0.1:8000/
+```
+
+Full instructions (incl. production dry-run) in `docs/REVAMP-DJANGO-CPANEL.md` §10.

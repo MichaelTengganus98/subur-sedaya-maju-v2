@@ -1,0 +1,30 @@
+{% load static %}<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}PT. Subur Sedaya Maju — Transportasi Alat Berat Terpercaya{% endblock %}</title>
+<meta name="description" content="{% block meta_description %}PT Subur Sedaya Maju adalah perusahaan transportasi alat berat terpercaya sejak 2006, menyediakan solusi pengangkutan muatan besar, alat konstruksi, dan peralatan industri di seluruh Indonesia dengan armada modern dan tim profesional.{% endblock %}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.subursedayamaju.co.id/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PT. Subur Sedaya Maju — Transportasi Alat Berat Terpercaya">
+<meta property="og:description" content="Perusahaan jasa transportasi alat berat yang fokus pada keselamatan, melayani pelanggan di seluruh Indonesia sejak 2006.">
+<meta property="og:url" content="https://www.subursedayamaju.co.id/">
+<meta property="og:site_name" content="PT. Subur Sedaya Maju">
+<meta property="og:image" content="{% static 'images/logo-horizontal.png' %}">
+<link rel="icon" href="{% static 'images/favicon-32.png' %}" sizes="32x32">
+<link rel="icon" href="{% static 'images/favicon.png' %}" sizes="192x192">
+<link rel="apple-touch-icon" href="{% static 'images/favicon.png' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}
+<script src="{% static 'js/main.js' %}"></script>
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

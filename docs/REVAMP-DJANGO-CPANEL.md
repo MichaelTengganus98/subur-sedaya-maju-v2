@@ -7,7 +7,14 @@ can be deployed on the existing cPanel shared hosting using cPanel's
 **Setup Python App** (Passenger / WSGI), while keeping the same look, content, and
 Indonesian copy.
 
-This document is the plan. Code lands in later commits on this branch.
+This document is the plan. The Django scaffold (project skeleton + home page
+ported from `index.html`) is now committed on this branch — see §10 for how to
+run it locally.
+
+**Python target: 3.8** (the version available in the client's cPanel), which
+pins the stack to **Django 4.2 LTS** — the last Django series that supports
+Python 3.8 (security support until April 2026). Move to Django 5.x only after
+cPanel's Python is upgraded to 3.10+.
 
 ---
 
@@ -100,16 +107,19 @@ Media (`photo`, `logo`, `document`) → `MEDIA_ROOT` under the app root (see §6
   DEFAULT_FROM_EMAIL = "PT Subur Sedaya Maju <no-reply@subursedayamaju.co.id>"
   ```
 
-## 5. Dependencies (`requirements.txt`, first pass)
+## 5. Dependencies (`requirements.txt`)
+
+Current, as committed (Python 3.8 → Django 4.2 LTS):
 
 ```
-Django>=5.0,<5.3
-gunicorn            # local prod-like runs only; cPanel uses Passenger
-python-dotenv       # load .env
-whitenoise          # serve static files from the WSGI app
-Pillow              # ImageField
-dj-database-url     # optional, if we move off sqlite
+Django>=4.2,<4.3
+python-dotenv>=1.0,<2.0
+whitenoise>=6.6,<7.0
+Pillow>=10.0,<10.5      # last Pillow series with cp38 wheels
 ```
+
+Not included yet, add when the matching feature lands:
+`dj-database-url` + `mysqlclient` (only if we move off SQLite).
 
 Database: **SQLite** is fine for this traffic level and simplest on shared
 hosting. If cPanel offers MySQL and the client prefers it, switch via
@@ -120,11 +130,13 @@ Run `collectstatic` on deploy; WhiteNoise serves `/static/` from `STATIC_ROOT`.
 
 ## 6. cPanel deployment (Setup Python App / Passenger)
 
-Assumes cPanel with "Setup Python App" available (Python 3.8+; check the version).
+Assumes cPanel with "Setup Python App" available. This project is built for
+**Python 3.8**; if cPanel offers a newer 3.x it will still run (bump Django
+afterwards).
 
 ### One-time setup
 1. **cPanel → Setup Python App → Create Application**
-   - Python version: newest available (3.10+ preferred).
+   - Python version: 3.8 (or newer if offered).
    - Application root: e.g. `subursedayamaju_app` (NOT inside `public_html`).
    - Application URL: the domain (or a subdomain for staging first).
    - Application startup file: `passenger_wsgi.py`
@@ -192,34 +204,75 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 3600  # raise after verifying
-STORAGES = {  # Django 5 style
+STORAGES = {  # Django 4.2+ dict-style storages
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
 ```
 
+(All of the above is already implemented in `config/settings/production.py`.)
+
 Add structured data (JSON-LD `LocalBusiness` / `MovingCompany`), `sitemap.xml`
 (`django.contrib.sitemaps`), and `robots.txt` while we're rebuilding — all listed
 as gaps in `SITE-OVERVIEW.md` §8.
 
-## 8. Migration steps (suggested commit order on this branch)
+## 8. Migration steps (commit order on this branch)
 
-1. Scaffold Django project + `config/settings/{base,development,production}.py`.
-2. Port `assets/` → `static/`; build `base.html` + section partials; home view
-   renders the page **pixel-identical** to `index.html`.
-3. Add `passenger_wsgi.py`, `requirements.txt`, `.env.example`, WhiteNoise.
-4. `contact` app: model + form + email send + tests. Wire `static/js/main.js` to POST.
-5. `content` app: models + admin + template loops; migrate existing hard-coded
+1. ✅ Scaffold Django project + `config/settings/{base,development,production}.py`,
+   `passenger_wsgi.py`, `requirements.txt`, `.env.example`, WhiteNoise.
+2. ✅ Port `assets/` → `static/`; `base.html` + `pages/home.html` render the page
+   from `index.html` (currently one template block — split into section partials next).
+3. ⬜ Split `home.html` into `partials/_*.html` section includes.
+4. ⬜ `contact` app: model + form + email send + tests. Wire `static/js/main.js` to POST.
+5. ⬜ `content` app: models + admin + template loops; migrate existing hard-coded
    copy into fixtures/data migration.
-6. SEO: JSON-LD, sitemap, robots, meta review.
-7. Deploy to a **staging subdomain** on cPanel, verify, then cut over the main domain.
-8. Keep `main` (static site) as the rollback target until the Django site is verified live.
+6. ⬜ SEO: JSON-LD, sitemap, robots, meta review.
+7. ⬜ Deploy to a **staging subdomain** on cPanel, verify, then cut over the main domain.
+8. ⬜ Keep `main` (static site) as the rollback target until the Django site is verified live.
 
 ## 9. Open questions for the client
 
 - Do they want admin-editable content, or is a clean static rebuild enough?
 - Preferred DB: SQLite (simplest) or MySQL (already in cPanel)?
 - Which mailbox should the contact form send from / to?
-- Python version available in their cPanel? (decides Django version)
+- Confirm cPanel's Python version. Built for 3.8 / Django 4.2; newer is fine.
 - Is there SSH access, or File-Manager/Git-only? (decides deploy workflow)
 - Staging subdomain available (e.g. `staging.subursedayamaju.co.id`)?
+
+## 10. Run locally
+
+Requires Python 3.8 on PATH (or via `py`/`uv`). From the branch checkout:
+
+```bash
+# 1. virtualenv
+python3.8 -m venv .venv
+# Windows:
+.venv\Scripts\activate
+# macOS/Linux:
+source .venv/bin/activate
+
+# 2. dependencies
+pip install -r requirements.txt
+
+# 3. database (SQLite, created in the project root)
+python manage.py migrate
+
+# 4. optional admin user
+python manage.py createsuperuser
+
+# 5. run  (defaults to config.settings.development)
+python manage.py runserver
+# -> http://127.0.0.1:8000/         home page
+# -> http://127.0.0.1:8000/admin/   Django admin
+```
+
+`.venv/`, `db.sqlite3`, and `staticfiles/` are git-ignored.
+
+Production dry-run (uses `config.settings.production`, needs a `SECRET_KEY`):
+
+```bash
+SECRET_KEY=xxx ALLOWED_HOSTS=localhost DJANGO_SETTINGS_MODULE=config.settings.production \
+  python manage.py collectstatic --noinput
+SECRET_KEY=xxx ALLOWED_HOSTS=localhost DJANGO_SETTINGS_MODULE=config.settings.production \
+  python manage.py check --deploy
+```
