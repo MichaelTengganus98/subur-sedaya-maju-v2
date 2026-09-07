@@ -220,8 +220,10 @@ as gaps in `SITE-OVERVIEW.md` §8.
 
 1. ✅ Scaffold Django project + `config/settings/{base,development,production}.py`,
    `passenger_wsgi.py`, `requirements.txt`, `.env.example`, WhiteNoise.
-2. ✅ Port `assets/` → `static/`; `base.html` + `pages/home.html` render the page
-   from `index.html` (currently one template block — split into section partials next).
+2. ✅ Port `assets/` → `static/`; `base.html` + `pages/home.html` render the page.
+   Then re-skinned to the industrial redesign — new `static/css/style.css`, Archivo
+   / IBM Plex fonts, all sections kept, real photos in restyled frames. Design
+   system documented in `DESIGN-SYSTEM.md`. Reference: `design/subursedayamaju-redesign.html`.
 3. ⬜ Split `home.html` into `partials/_*.html` section includes.
 4. ⬜ `contact` app: model + form + email send + tests. Wire `static/js/main.js` to POST.
 5. ⬜ `content` app: models + admin + template loops; migrate existing hard-coded
