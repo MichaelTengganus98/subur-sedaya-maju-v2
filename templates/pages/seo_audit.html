@@ -1,0 +1,70 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SEO Health — {{ result.url }}</title>
+<style>
+  :root{
+    --bg:#1B1E20; --ink:#EDE9E1; --muted:#9AA0A3; --line:#454C50;
+    --pass:#4BAF6A; --warn:#E8A020; --fail:#B4432B; --info:#5B8BB0;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+        font:14px/1.55 "IBM Plex Sans","Segoe UI",system-ui,sans-serif; }
+  .wrap{ max-width:940px; margin:0 auto; padding:40px 22px 90px; }
+  h1{ font-family:"Archivo","Segoe UI",sans-serif; font-size:22px; margin:0 0 4px; }
+  .sub{ color:var(--muted); font-family:"IBM Plex Mono","SF Mono",monospace;
+        font-size:12px; margin-bottom:26px; word-break:break-all; }
+  .score{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px; }
+  .pill{ border:1px solid var(--line); padding:8px 13px; font-family:"IBM Plex Mono",monospace;
+         font-size:11px; letter-spacing:.05em; text-transform:uppercase; }
+  .pill b{ font-size:15px; margin-right:5px; }
+  .pill.pass{ border-color:var(--pass); color:var(--pass); }
+  .pill.warn{ border-color:var(--warn); color:var(--warn); }
+  .pill.fail{ border-color:var(--fail); color:var(--fail); }
+  table{ width:100%; border-collapse:collapse; }
+  td{ border-top:1px solid var(--line); padding:13px 10px; vertical-align:top; }
+  tr:first-child td{ border-top:none; }
+  .st{ white-space:nowrap; width:56px; font-family:"IBM Plex Mono",monospace; font-size:11px;
+       letter-spacing:.06em; text-transform:uppercase; font-weight:700; }
+  .st.pass{ color:var(--pass); } .st.warn{ color:var(--warn); }
+  .st.fail{ color:var(--fail); } .st.info{ color:var(--info); }
+  .lbl{ font-weight:600; width:210px; }
+  .detail{ color:var(--muted); word-break:break-word; }
+  a{ color:var(--warn); }
+  .foot{ margin-top:28px; color:var(--muted); font-size:12px; line-height:1.7; }
+  code{ font-family:"IBM Plex Mono",monospace; background:rgba(255,255,255,.06); padding:1px 5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>SEO health check</h1>
+  <div class="sub">{{ result.url }} &middot; home template rendered in-process &middot; {% now "Y-m-d H:i" %}</div>
+
+  <div class="score">
+    <span class="pill pass"><b>{{ result.summary.pass }}</b>pass</span>
+    <span class="pill warn"><b>{{ result.summary.warn }}</b>warn</span>
+    <span class="pill fail"><b>{{ result.summary.fail }}</b>fail</span>
+    <span class="pill"><b>{{ result.summary.info }}</b>info</span>
+  </div>
+
+  <table>
+    {% for c in result.checks %}
+    <tr>
+      <td class="st {{ c.status }}">{{ c.status }}</td>
+      <td class="lbl">{{ c.label }}</td>
+      <td class="detail">{{ c.detail }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <div class="foot">
+    Raw JSON: <a href="?format=json">?format=json</a><br>
+    Checks the home page only. This page is <code>noindex</code> and is served
+    just with <code>DEBUG=True</code> or to signed-in staff.
+  </div>
+</div>
+</body>
+</html>
