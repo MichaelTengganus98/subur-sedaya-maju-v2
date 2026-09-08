@@ -185,18 +185,27 @@ it at `config.wsgi`.)
   Passenger block.
 
 ### Deploy updates
+
+Over SSH, from the app root, with the app's virtualenv activated and the app's
+env vars exported (cPanel does the latter from the "Environment Variables" panel;
+make sure `DJANGO_SETTINGS_MODULE=config.settings.production` is among them):
+
 ```
-git pull            # or re-upload changed files
-pip install -r requirements.txt   # if changed
-python manage.py migrate          # if migrations
-python manage.py optimize_images  # only if a source photo changed (webp is committed)
-python manage.py collectstatic --noinput
-touch tmp/restart.txt
+git pull
+bash sync.sh
 ```
 
-SEO-related env vars to set in the Python App UI (all optional, see `SEO.md`):
-`CANONICAL_HOST`, and `GA4_MEASUREMENT_ID` / `PLAUSIBLE_DOMAIN` when analytics
-is approved.
+`sync.sh` installs/upgrades `requirements.txt`, runs `migrate` +
+`collectstatic`, and (since it is not a DEBUG box) `touch`es `tmp/restart.txt`.
+It does **not** touch the admin user unless you pass `DJANGO_SUPERUSER_PASSWORD`
+/ `SSM_ADMIN_PASS`. Run `python manage.py optimize_images` too only if a source
+photo changed (the `.webp` files are committed).
+
+Env vars to set in the Python App UI (see `SEO.md`): `SECRET_KEY`,
+`DJANGO_SETTINGS_MODULE`, `ALLOWED_HOSTS`, `DATABASE_URL`/`SQLITE_PATH`,
+`CANONICAL_HOST`, the `EMAIL_*` group (so the contact form's notification
+actually sends), and `GA4_MEASUREMENT_ID` / `PLAUSIBLE_DOMAIN` when analytics is
+approved.
 
 ## 7. Settings essentials for shared hosting
 
@@ -258,18 +267,27 @@ as gaps in `SITE-OVERVIEW.md` §8.
 
 ## 10. Run locally
 
-Requires Python 3.8 on PATH as `python3.8` (or set `SSM_PYTHON`). From the branch
-checkout, the `scripts/dev.sh` helpers do everything:
+Requires Python 3.8 on PATH as `python3.8` (or set `SSM_PYTHON`). One command
+does the whole setup and every later update:
+
+```bash
+git pull        # first time: git clone ... && cd website
+bash sync.sh    # venv + deps + migrate + collectstatic + (dev) admin user
+python manage.py runserver     # or: source scripts/dev.sh && ssm_run
+```
+
+`bash sync.sh` is idempotent — run it after every `git pull`. On a local
+(DEBUG) checkout it also creates the admin login `adminssm` / `ssmadmin`.
+
+For interactive work, `scripts/dev.sh` exposes the steps as functions:
 
 ```bash
 source scripts/dev.sh
-
-ssm_install     # create .venv (once) + pip install -r requirements.txt
-ssm_sync        # manage.py migrate + collectstatic
-ssm_admin       # create the admin login (dev: adminssm / ssmadmin)
-ssm_run         # runserver on 127.0.0.1:8000
-# ssm_bootstrap  == install + sync + admin in one go
-# ssm_check      == manage.py check + test
+ssm_install   # venv + pip install -r requirements.txt
+ssm_sync      # migrate + collectstatic
+ssm_admin     # (re)create the admin login
+ssm_run       # runserver on 127.0.0.1:8000
+ssm_check     # manage.py check + test
 ```
 
 - `http://127.0.0.1:8000/`         home page

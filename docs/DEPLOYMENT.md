@@ -27,3 +27,17 @@ runs Python apps through Passenger with a separate application root and a
 `public_html` (or subdomain docroot) that only holds static assets and the
 Passenger entrypoint. See `REVAMP-DJANGO-CPANEL.md` on the `revamp/django-cpanel`
 branch.
+
+Once the Django app exists on the server, updating it is:
+
+```
+cd <app root>
+source <venv>/bin/activate        # cPanel shows the exact path
+git pull
+bash sync.sh                      # deps + migrate + collectstatic + restart
+```
+
+`bash sync.sh` is the same script used for local setup; it detects the
+production (non-DEBUG) box and `touch`es `tmp/restart.txt` instead of creating a
+dev admin user. First-time setup is also just `git clone` then `bash sync.sh`
+(with `DJANGO_SUPERUSER_PASSWORD` / `SSM_ADMIN_PASS` exported for the admin user).

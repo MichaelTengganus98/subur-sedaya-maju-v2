@@ -1,0 +1,13 @@
+# Shell scripts must stay LF-only so they run on the Linux (cPanel) server
+# even when cloned on a machine with core.autocrlf=true.
+*.sh   text eol=lf
+/sync.sh text eol=lf
+
+# Binary assets: never touch line endings, and skip textual diffs.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.ico  binary
+*.pdf  binary
+*.docx binary

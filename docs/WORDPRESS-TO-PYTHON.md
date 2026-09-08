@@ -83,8 +83,9 @@ Special cases:
 1. Deploy this project to a **staging subdomain** (`staging.subursedayamaju.co.id`)
    as its own cPanel "Setup Python App" — full steps in
    `REVAMP-DJANGO-CPANEL.md` §6. WordPress stays untouched on the apex.
-2. `ssm_sync` (migrate + collectstatic), `ssm_admin` with a **strong**
-   `SSM_ADMIN_PASS`.
+2. Over SSH, in the app root with the venv activated and env vars exported:
+   `git pull && SSM_ADMIN_PASS='…strong…' bash sync.sh` (deps + migrate +
+   collectstatic + admin user + restart).
 3. Smoke test on staging: every nav link, the contact form (submit a real test
    message, confirm it lands in `/message/` and the notification email arrives),
    `/sitemap.xml`, `/robots.txt`, `/seo/` (should be all-green), mobile layout.

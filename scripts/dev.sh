@@ -1,5 +1,9 @@
 # PT Subur Sedaya Maju - developer shell helpers (bash).
 #
+# For a plain "git pull then bring everything up to date" use ../sync.sh:
+#     bash sync.sh
+# This file is the interactive version - individual functions you can call.
+#
 #   source scripts/dev.sh
 #
 # then use:
@@ -25,7 +29,9 @@ SSM_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")/.." 2>/dev/null && pwd)"
 : "${SSM_VENV:=$SSM_ROOT/.venv}"
 
 _ssm_py() {
-  if   [ -x "$SSM_VENV/Scripts/python.exe" ]; then echo "$SSM_VENV/Scripts/python.exe"
+  if   [ -n "${VIRTUAL_ENV:-}" ] && [ -x "$VIRTUAL_ENV/bin/python" ];         then echo "$VIRTUAL_ENV/bin/python"
+  elif [ -n "${VIRTUAL_ENV:-}" ] && [ -x "$VIRTUAL_ENV/Scripts/python.exe" ]; then echo "$VIRTUAL_ENV/Scripts/python.exe"
+  elif [ -x "$SSM_VENV/Scripts/python.exe" ]; then echo "$SSM_VENV/Scripts/python.exe"
   elif [ -x "$SSM_VENV/bin/python" ];         then echo "$SSM_VENV/bin/python"
   else return 1; fi
 }
