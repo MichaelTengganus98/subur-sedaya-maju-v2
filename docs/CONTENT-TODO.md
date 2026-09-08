@@ -20,11 +20,12 @@ Status of content on the `revamp/django-cpanel` home page. The visible
 - **Still ideal:** a real photo + exact spec sheet per unit from the client
   (tonnage, dimensions, plate/asset count).
 
-## Testimonials / Testimoni (`#testimoni`) — replaced with Google reviews CTA
-- No public client testimonials exist, so the fake quote cards were removed.
-- Section now points to the company's Google Business reviews.
-- **Still ideal:** 2–3 real, attributed client quotes (name, role, company,
-  with permission) to show inline instead of / alongside the CTA.
+## Testimonials / Testimoni — section removed
+- The fake quote cards were removed earlier; the fallback "read our Google
+  Business reviews" CTA has now also been removed (the client has no Google
+  Business Profile), so the whole `#testimoni` section is gone.
+- **To bring it back:** collect 2–3 real, attributed client quotes (name, role,
+  company, with permission) and re-add the section with inline quote cards.
 
 ## Certifications / Legalitas (`#legalitas`) — reframed to verifiable facts
 - Fake "Nama Sertifikasi" badges removed. Now 4 real attributes:

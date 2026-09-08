@@ -411,18 +411,6 @@ h1,h2,h3,h4,h5{ font-family:var(--head); font-weight:700; line-height:1.2; }
 .cta-banner-inner p{ color:var(--muted); font-size:15px; max-width:46ch; }
 .cta-banner-actions{ display:flex; gap:16px; flex-wrap:wrap; }
 
-/* ---------- testimonials / reviews panel ---------- */
-.reviews-panel{
-  border:1px solid var(--line); background:var(--paper);
-  padding:40px; max-width:640px;
-  display:flex; flex-direction:column; align-items:flex-start; gap:16px;
-}
-.reviews-tag{
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
-  color:var(--amber-dim); border:1px solid var(--line); padding:6px 10px;
-}
-.reviews-panel p{ font-size:15px; color:var(--ink-soft); max-width:52ch; }
-
 /* ---------- certifications ---------- */
 .cert-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
 @media (max-width:760px){ .cert-grid{ grid-template-columns:1fr 1fr; } }

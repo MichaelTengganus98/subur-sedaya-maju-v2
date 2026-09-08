@@ -97,8 +97,8 @@ and what still needs client input or a later phase.
   now; currently points at `logo-horizontal.png` / the hero photo.
 - **Aggregate rating / reviews** — do **not** hard-code `aggregateRating` /
   `review` unless it reflects genuine, on-page, verifiable reviews. Fake rating
-  markup is a manual-action risk. The Google-reviews CTA stays until real
-  testimonials are collected.
+  markup is a manual-action risk. The testimonials section has been removed
+  entirely; re-add it only with real, attributed client quotes.
 - **Dedicated 1200×630 social share image** — current hero JPEG is 1200×900
   (works, not ideal ratio).
 
