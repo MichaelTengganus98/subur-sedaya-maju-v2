@@ -477,6 +477,11 @@
 				<h2 class="section-title">Mari Diskusikan Kebutuhan Anda</h2>
 				<p>Ceritakan kebutuhan transportasi alat berat Anda — tim kami merespons dalam 1×24 jam kerja.</p>
 			</div>
+			{% if request.GET.terkirim %}
+			<p class="form-alert form-alert-ok reveal">Terima kasih — pesan Anda sudah kami terima. Tim kami akan segera menghubungi Anda.</p>
+			{% elif request.GET.galat %}
+			<p class="form-alert form-alert-err reveal">Maaf, pesan gagal terkirim. Periksa email dan nomor telepon Anda, lalu coba lagi.</p>
+			{% endif %}
 			<div class="contact-grid reveal">
 				<div class="contact-info">
 					<div class="contact-info-item">
@@ -509,7 +514,13 @@
 					</div>
 				</div>
 
-				<form id="contact-form" class="contact-form">
+				<form id="contact-form" class="contact-form" method="post" action="{% url 'contact:submit' %}">
+					{% csrf_token %}
+					<div class="hp-field" aria-hidden="true">
+						<label>Jangan isi kolom ini
+							<input type="text" name="website" tabindex="-1" autocomplete="off">
+						</label>
+					</div>
 					<div class="form-row">
 						<div class="form-field">
 							<label for="first_name">Nama Depan</label>

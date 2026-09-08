@@ -483,6 +483,11 @@ h1,h2,h3,h4,h5{ font-family:var(--head); font-weight:700; line-height:1.2; }
 .form-field textarea:focus{ border-color:var(--amber-dim); outline:none; }
 .form-field textarea{ resize:vertical; min-height:120px; }
 .contact-form .btn{ width:100%; margin-top:6px; }
+.hp-field{ position:absolute !important; left:-9999px !important; width:1px; height:1px; overflow:hidden; }
+
+.form-alert{ border:1px solid var(--line); border-left-width:3px; padding:14px 16px; margin-bottom:24px; font-size:14.5px; }
+.form-alert-ok{ border-left-color:#4B8F5E; color:var(--ink); background:rgba(75,143,94,.08); }
+.form-alert-err{ border-left-color:var(--rust); color:var(--ink); background:rgba(180,67,43,.07); }
 
 /* ---------- location map ---------- */
 .map-embed{ border:1px solid var(--line); position:relative; }

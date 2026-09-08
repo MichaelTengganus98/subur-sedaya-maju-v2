@@ -48,7 +48,10 @@ Status of content on the `revamp/django-cpanel` home page. The visible
 ## Other content fixes
 - ~~Contact form labels English → Indonesian~~ — done.
 - Confirm the "20+ tahun" figure (2006 → 2026 ≈ 20 years).
-- Decide whether the contact form should send email server-side (see
-  `REVAMP-DJANGO-CPANEL.md` §4).
+- ~~Decide whether the contact form should send email server-side~~ — done: the
+  form now POSTs to the `contact` app, saves a `ContactMessage`, and emails
+  `CONTACT_EMAIL`. Submissions are at `/message/` and in the Django admin.
+  Configure real SMTP (`EMAIL_*` env vars) on the server so the notification
+  actually sends.
 - Replace the reused hero/partner/mitra photos in the Fleet section once
   dedicated unit photos exist, so no image appears twice on the page.

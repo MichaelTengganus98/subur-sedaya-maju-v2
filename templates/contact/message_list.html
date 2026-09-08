@@ -1,0 +1,75 @@
+{% load static %}<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pesan Masuk — PT Subur Sedaya Maju</title>
+<style>
+  :root{ --bg:#1B1E20; --ink:#EDE9E1; --muted:#9AA0A3; --line:#454C50; --amber:#E8A020; --ok:#4BAF6A; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+        font:14px/1.55 "IBM Plex Sans","Segoe UI",system-ui,sans-serif; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:36px 20px 80px; }
+  h1{ font-family:"Archivo","Segoe UI",sans-serif; font-size:21px; margin:0 0 4px; }
+  .sub{ color:var(--muted); font-family:"IBM Plex Mono",monospace; font-size:12px; margin-bottom:22px; }
+  .sub a{ color:var(--amber); }
+  .tools{ margin-bottom:18px; }
+  .tools a{ color:var(--amber); font-family:"IBM Plex Mono",monospace; font-size:12px; }
+  table{ width:100%; border-collapse:collapse; }
+  th,td{ border-top:1px solid var(--line); padding:12px 10px; vertical-align:top; text-align:left; }
+  th{ font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); border-top:none; }
+  td.when{ white-space:nowrap; color:var(--muted); font-family:"IBM Plex Mono",monospace; font-size:12px; }
+  td.msg{ color:var(--muted); max-width:420px; }
+  a{ color:inherit; }
+  .pill{ font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1px solid var(--line); padding:2px 7px; color:var(--muted); }
+  .pill.ok{ border-color:var(--ok); color:var(--ok); }
+  .empty{ color:var(--muted); padding:40px 0; }
+  .pager{ margin-top:22px; font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); }
+  .pager a{ color:var(--amber); }
+  @media (max-width:640px){ td.msg{ max-width:none; } table, thead, tbody, th, td, tr{ display:block; } th{ display:none; } td{ border:none; padding:3px 0; } tr{ border-top:1px solid var(--line); padding:12px 0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Pesan masuk dari formulir kontak</h1>
+  <div class="sub">masuk sebagai {{ request.user.username }} &middot; {{ paginator.count }} pesan</div>
+  <div class="tools">
+    <a href="/admin/contact/contactmessage/">Buka di Django admin &rarr;</a>
+  </div>
+
+  {% if rows %}
+  <table>
+    <thead>
+      <tr><th>Waktu</th><th>Nama</th><th>Kontak</th><th>Subjek</th><th>Pesan</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+    {% for m in rows %}
+      <tr>
+        <td class="when">{{ m.created_at|date:"d M Y H:i" }}</td>
+        <td>{{ m.full_name|default:"—" }}</td>
+        <td>
+          <a href="mailto:{{ m.email }}">{{ m.email }}</a><br>
+          <a href="tel:{{ m.phone }}">{{ m.phone }}</a>
+        </td>
+        <td>{{ m.subject|default:"—" }}</td>
+        <td class="msg">{{ m.message|linebreaksbr }}</td>
+        <td>{% if m.is_handled %}<span class="pill ok">selesai</span>{% else %}<span class="pill">baru</span>{% endif %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  {% if is_paginated %}
+  <div class="pager">
+    {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">&larr; sebelumnya</a>{% endif %}
+    <span> halaman {{ page_obj.number }} / {{ paginator.num_pages }} </span>
+    {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">berikutnya &rarr;</a>{% endif %}
+  </div>
+  {% endif %}
+  {% else %}
+  <p class="empty">Belum ada pesan masuk.</p>
+  {% endif %}
+</div>
+</body>
+</html>

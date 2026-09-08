@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     # Local apps
     "apps.pages",
+    "apps.contact",
 ]
 
 MIDDLEWARE = [

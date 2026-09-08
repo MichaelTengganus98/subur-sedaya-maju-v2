@@ -1,6 +1,4 @@
 (function () {
-	var CONTACT_EMAIL = "admin@subursedayamaju.co.id";
-
 	/* Mobile navigation */
 	var navToggle = document.querySelector(".nav-toggle");
 	var siteNav = document.querySelector(".site-nav");
@@ -108,36 +106,16 @@
 		yearEl.textContent = new Date().getFullYear();
 	}
 
-	/* Contact form -> mailto */
+	/* Contact form: submits natively as a POST to the Django `contact` app.
+	   Progressive enhancement only — guard against double submits. */
 	var form = document.getElementById("contact-form");
 	if (form) {
-		form.addEventListener("submit", function (event) {
-			event.preventDefault();
-
-			var firstName = form.first_name.value.trim();
-			var lastName = form.last_name.value.trim();
-			var email = form.email.value.trim();
-			var subjectField = form.subject.value.trim();
-			var phone = form.phone.value.trim();
-			var message = form.message.value.trim();
-
-			var fullName = (firstName + " " + lastName).trim();
-			var subject = subjectField || ("Pesan dari " + (fullName || "website"));
-
-			var bodyLines = [
-				"Nama: " + (fullName || "-"),
-				"Email: " + (email || "-"),
-				"Telepon: " + (phone || "-"),
-				"",
-				message
-			];
-
-			var mailtoUrl =
-				"mailto:" + CONTACT_EMAIL +
-				"?subject=" + encodeURIComponent(subject) +
-				"&body=" + encodeURIComponent(bodyLines.join("\n"));
-
-			window.location.href = mailtoUrl;
+		form.addEventListener("submit", function () {
+			var btn = form.querySelector('button[type="submit"]');
+			if (btn) {
+				btn.disabled = true;
+				btn.textContent = "Mengirim…";
+			}
 		});
 	}
 })();
