@@ -8,6 +8,46 @@ on the same cPanel account, without losing search rankings or breaking links.
 
 ---
 
+## 0. If WordPress was installed by Softaculous (cPanel)
+
+The staging → verify → repoint-docroot → keep-as-rollback flow below is
+unchanged. These are the extra cPanel-specific things to get right:
+
+- **Softaculous keeps a record of the install** and runs crons for it. *Before*
+  cutover: cPanel → **Softaculous Apps Installer → All Installations → Edit
+  Details** for the WP install → turn **off Auto Upgrade** and any auto-backup.
+  Deleting files by hand without this leaves stale cron jobs and "update
+  available" emails.
+- **"Remove Installation" is destructive and final** — it drops the MySQL
+  database *and* deletes the directory, no undo. Do it only at the very end
+  (§7), after the rollback window.
+- **Take backups first:** Softaculous has its own **Backup** button, and
+  cPanel → **Backup** → download a full or partial (Home Directory + the WP
+  database) backup. Keep both.
+- **Confirm where WP lives.** Softaculous's *"In Directory"* is usually
+  `public_html` (site root) but can be `public_html/blog` or a subdomain docroot
+  — that is exactly the directory Passenger must take over in §6.3.
+- **Save `.htaccess` before Passenger overwrites it.** WordPress + any
+  caching / security / SSL / redirect plugin writes rules into the docroot's
+  `.htaccess`; "Setup Python App" replaces that file with its own managed block.
+  Copy it aside and re-implement what still matters (HTTPS redirect →
+  `production.py` already does it; www↔non-www → decide and set in Django or the
+  new `.htaccess`; old-URL redirects → the map in §3).
+- **Physical files beat Django routes.** Apache serves a real
+  `public_html/robots.txt`, `sitemap.xml`, `sitemap_index.xml`, `favicon.ico`,
+  `ads.txt` *before* the request ever reaches the Python app. WP/Yoast normally
+  generate these virtually, but some plugins write real files. After moving WP
+  aside (§6.3), delete any leftover physical `robots.txt` / `sitemap*.xml` in the
+  docroot so this project's `/robots.txt` and `/sitemap.xml` actually take
+  effect.
+- **The MySQL database is orphaned.** This project uses SQLite, so the
+  Softaculous `cpuser_wpNNN` database + user just sit unused after cutover —
+  drop them with "Remove Installation" once WP is retired. (Only relevant if you
+  later want Django on MySQL — that's the `dj-database-url` + `mysqlclient` path
+  in `REVAMP-DJANGO-CPANEL.md` §5, not required.)
+- **`wp-cron`.** If cPanel → **Cron Jobs** has an entry calling `wp-cron.php`,
+  remove it after WP is gone (§7).
+
 ## 1. Inventory what WordPress is doing
 
 Before touching anything, write down:
@@ -106,7 +146,11 @@ Low-traffic window (e.g. Sunday night WIB):
      to it.
    - Move the WordPress files out of the way: rename `public_html` contents
      (`wp-*`, `wp-content`, …) into `public_html/_wp_old/` so they stop being
-     served but are recoverable.
+     served but are recoverable. **Do not** use Softaculous "Remove Installation"
+     yet — that drops the database too.
+   - Delete any physical `public_html/robots.txt`, `sitemap*.xml`, and the old
+     WordPress `.htaccess` (you saved a copy in §0) so Passenger + Django own
+     those routes.
 4. `touch tmp/restart.txt`, then smoke-test the apex exactly as in §5.3.
 5. Put the redirect rules live (they were staged in §3).
 6. In Search Console: submit the new sitemap, use **URL Inspection → Request
@@ -118,8 +162,10 @@ Low-traffic window (e.g. Sunday night WIB):
   server logs for 404s and for hits on `/wp-*` (bots probing — fine, just 404).
 - Keep `public_html/_wp_old/` and a full WordPress DB dump for at least a month
   as the rollback path. Rollback = restore the files and point the docroot back.
-- Once stable: delete the WP database and `_wp_old/`, cancel paid plugin
-  licences, remove the staging app (or keep it for future staging).
+- Once stable: in Softaculous, **Remove Installation** for the WP entry (this
+  drops the `cpuser_wpNNN` database + user and deletes the directory), delete
+  `_wp_old/`, remove any `wp-cron.php` cron job, cancel paid plugin licences, and
+  remove the staging app (or keep it for future staging).
 
 ## 8. Security note for the admin
 
