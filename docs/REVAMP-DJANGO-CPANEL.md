@@ -230,7 +230,14 @@ as gaps in `SITE-OVERVIEW.md` §8.
    / IBM Plex fonts, all sections kept, real photos in restyled frames. Design
    system documented in `DESIGN-SYSTEM.md`. Reference: `design/subursedayamaju-redesign.html`.
 3. ⬜ Split `home.html` into `partials/_*.html` section includes.
-4. ⬜ `contact` app: model + form + email send + tests. Wire `static/js/main.js` to POST.
+4. ✅ `contact` app: `ContactMessage` model, `ContactForm` (honeypot + phone
+   check), `/kirim-pesan/` POST (PRG, saves + emails `CONTACT_EMAIL`),
+   `/message/` staff list, Django admin registration, tests. `main.js` no longer
+   does the `mailto:` hijack — the form is a native POST with `{% csrf_token %}`.
+   Admin login is created by `manage.py ensure_admin` /
+   `scripts/dev.sh ssm_admin` (dev default `adminssm` / `ssmadmin`; set a strong
+   `SSM_ADMIN_PASS` on the server — `ensure_admin` refuses the default when
+   `DEBUG` is off).
 5. ⬜ `content` app: models + admin + template loops; migrate existing hard-coded
    copy into fixtures/data migration.
 6. 🔶 SEO: JSON-LD (`WebSite` + `MovingCompany`/`LocalBusiness` + `FAQPage`),
@@ -251,32 +258,41 @@ as gaps in `SITE-OVERVIEW.md` §8.
 
 ## 10. Run locally
 
-Requires Python 3.8 on PATH (or via `py`/`uv`). From the branch checkout:
+Requires Python 3.8 on PATH as `python3.8` (or set `SSM_PYTHON`). From the branch
+checkout, the `scripts/dev.sh` helpers do everything:
 
 ```bash
-# 1. virtualenv
-python3.8 -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
+source scripts/dev.sh
 
-# 2. dependencies
+ssm_install     # create .venv (once) + pip install -r requirements.txt
+ssm_sync        # manage.py migrate + collectstatic
+ssm_admin       # create the admin login (dev: adminssm / ssmadmin)
+ssm_run         # runserver on 127.0.0.1:8000
+# ssm_bootstrap  == install + sync + admin in one go
+# ssm_check      == manage.py check + test
+```
+
+- `http://127.0.0.1:8000/`         home page
+- `http://127.0.0.1:8000/admin/`   Django admin (contact messages, users)
+- `http://127.0.0.1:8000/message/` staff-only list of contact-form submissions
+- `http://127.0.0.1:8000/seo/`     on-page SEO health check (DEBUG/staff only)
+
+Doing it by hand instead:
+
+```bash
+python3.8 -m venv .venv && source .venv/bin/activate   # .venv\Scripts\activate on Windows
 pip install -r requirements.txt
-
-# 3. database (SQLite, created in the project root)
 python manage.py migrate
-
-# 4. optional admin user
-python manage.py createsuperuser
-
-# 5. run  (defaults to config.settings.development)
+DJANGO_SUPERUSER_USERNAME=adminssm DJANGO_SUPERUSER_PASSWORD=ssmadmin \
+  python manage.py ensure_admin        # or: python manage.py createsuperuser
 python manage.py runserver
-# -> http://127.0.0.1:8000/         home page
-# -> http://127.0.0.1:8000/admin/   Django admin
 ```
 
 `.venv/`, `db.sqlite3`, and `staticfiles/` are git-ignored.
+
+**Admin password:** `ssmadmin` is a local-only convenience. On the server export a
+strong `SSM_ADMIN_PASS` (or `DJANGO_SUPERUSER_PASSWORD`) before running
+`ensure_admin` — it refuses the dev default when `DEBUG` is off.
 
 Production dry-run (uses `config.settings.production`, needs a `SECRET_KEY`):
 
