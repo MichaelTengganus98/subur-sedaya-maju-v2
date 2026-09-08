@@ -8,8 +8,15 @@ Status of content on the `revamp/django-cpanel` home page. The visible
 - 6 cards now name real unit types with specs sourced from public company
   info: Self-Loader Truck, Lowboy (Lowbed Trailer), Trailer & Dolly,
   Crawler Crane 25–260 T, Dump Truck, Alat Berat Pendukung.
-- 3 cards reuse the company's own photos (`hero-truck`, `partner-photo`,
-  `mitra-photo`); 3 use a neutral equipment tile.
+- All 6 cards now show a photo. 3 are the company's own yard photos
+  (`hero-truck`, `partner-photo`, `mitra-photo`); 3 are client-supplied stock
+  images (`fleet-lowboy`, `fleet-trailer-dolly`, `fleet-dump-truck`).
+- **Provenance flag:** `fleet-trailer-dolly` and `fleet-dump-truck` are US
+  stock/AI photos with another company's name on the truck door
+  ("ROADMASTER FREIGHT", "BUILD-MOR CONSTRUCTION") and non-Indonesian scenery.
+  The grayscale/contrast filter softens this but they do not match SSM's real
+  fleet. Replace with SSM's own unit photos before this goes to production, or
+  at minimum crop out the visible third-party branding.
 - **Still ideal:** a real photo + exact spec sheet per unit from the client
   (tonnage, dimensions, plate/asset count).
 

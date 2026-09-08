@@ -20,6 +20,9 @@ TARGETS = [
     "visi-photo.png",
     "partner-photo.png",
     "mitra-photo.jpeg",
+    "fleet-lowboy.jpg",
+    "fleet-trailer-dolly.jpg",
+    "fleet-dump-truck.jpg",
 ]
 
 
