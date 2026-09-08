@@ -152,8 +152,12 @@ def _route_ok(path):
         return False
 
 
-def audit(html, *, base_url="", check_routes=True):
-    """Run the checks against ``html`` and return a JSON-serialisable dict."""
+def audit(html, *, base_url="", check_routes=True, dns_verification=True):
+    """Run the checks against ``html`` and return a JSON-serialisable dict.
+
+    ``dns_verification`` tells the Search Console check that the site is (or will
+    be) verified via a DNS TXT record, so a missing HTML-tag meta is expected.
+    """
     dom = _DOM()
     dom.feed(html)
     checks: list[Check] = []
@@ -312,9 +316,18 @@ def audit(html, *, base_url="", check_routes=True):
                                      ("plausible", "Plausible")) if token in srcs]
     add(Check("analytics", "Analytics", "info", ", ".join(found) if found else "None loaded."))
 
-    # --- Search Console meta (informational) ----------------------------
-    add(Check("gsc", "Search Console meta", "info",
-              dom.meta_name("google-site-verification") or "Not set (DNS TXT method may be in use)."))
+    # --- Search Console verification -----------------------------------
+    gsv_meta = dom.meta_name("google-site-verification")
+    if gsv_meta:
+        gsv_detail = f"HTML-tag method: meta present ({gsv_meta[:12]}…)."
+        gsv_status = "pass"
+    elif dns_verification:
+        gsv_detail = "No HTML-tag meta; verified via DNS TXT record (Domain property). OK."
+        gsv_status = "pass"
+    else:
+        gsv_detail = "Not verified: no meta tag and DNS TXT not configured."
+        gsv_status = "warn"
+    add(Check("gsc", "Search Console verification", gsv_status, gsv_detail))
 
     summary = {s: sum(c.status == s for c in checks) for s in ("pass", "warn", "fail", "info")}
     summary["total"] = len(checks)

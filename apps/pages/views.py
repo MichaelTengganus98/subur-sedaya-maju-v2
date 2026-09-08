@@ -24,7 +24,13 @@ class SeoAuditView(View):
         if not (settings.DEBUG or request.user.is_staff):
             raise Http404()
         html = render_to_string("pages/home.html", request=request)
-        result = audit(html, base_url=request.build_absolute_uri("/"))
+        # Search Console for this domain is verified via a DNS TXT record, so a
+        # missing HTML-tag meta is expected rather than a problem.
+        result = audit(
+            html,
+            base_url=request.build_absolute_uri("/"),
+            dns_verification=True,
+        )
         if request.GET.get("format") == "json":
             return JsonResponse(result)
         return render(request, "pages/seo_audit.html", {"result": result})

@@ -106,14 +106,14 @@ and what still needs client input or a later phase.
 
 - **Google Search Console** — verification token
   `google-site-verification=5rAifQ57E0D1t9sLSYTmmFViQS3BRacMBBMxoLgwFHU`.
-  Two ways, either works:
-  1. **DNS TXT** (Domain property, covers all subdomains) — add a TXT record at
-     Dewaweb (host `@`, value = the whole `google-site-verification=...` string).
-  2. **HTML tag** (URL-prefix property) — set `GOOGLE_SITE_VERIFICATION` env var
-     to just the token (`5rAif…FHU`); `base.html` renders the meta tag. Deploy,
-     then click Verify.
-  After verifying, submit `https://www.subursedayamaju.co.id/sitemap.xml` and
-  watch Coverage + Core Web Vitals. **Do not remove** the record/tag afterwards.
+  **DNS TXT record added at Dewaweb (done).** Once it has propagated, verify the
+  Domain property in Search Console, then submit
+  `https://www.subursedayamaju.co.id/sitemap.xml` and watch Coverage + Core Web
+  Vitals. **Do not remove the TXT record** afterwards.
+  (Alternative, not needed: the HTML-tag method — set `GOOGLE_SITE_VERIFICATION`
+  to just the token and `base.html` renders the meta.)
+  The `/seo` check treats a missing meta tag as fine because DNS is used
+  (`SeoAuditView` passes `dns_verification=True`).
 - **Bing Webmaster Tools** — import from GSC once GSC is verified.
 - **Bing Places + Apple Business Connect** — free business listings that do not
   depend on Google Business Profile (which is blocked, see §2b).
