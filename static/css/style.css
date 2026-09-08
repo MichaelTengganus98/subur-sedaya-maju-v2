@@ -452,26 +452,30 @@ h1,h2,h3,h4,h5{ font-family:var(--head); font-weight:700; line-height:1.2; }
 .faq-item p{ padding:0 4px 24px; font-size:14.5px; color:var(--ink-soft); max-width:70ch; }
 
 /* ---------- contact ---------- */
-.contact-grid{ display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); }
-@media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
-.contact-info{ padding:44px; background:var(--concrete); }
-.contact-form{ padding:44px; background:var(--paper); border-left:1px solid var(--line); }
+.contact-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); border:1px solid var(--line); }
+@media (max-width:900px){ .contact-grid{ grid-template-columns:minmax(0,1fr); } }
+.contact-info{ min-width:0; padding:44px; background:var(--concrete); }
+.contact-form{ min-width:0; padding:44px; background:var(--paper); border-left:1px solid var(--line); }
+@media (max-width:520px){ .contact-info,.contact-form{ padding:32px 22px; } }
 @media (max-width:900px){ .contact-form{ border-left:none; border-top:1px solid var(--line); } }
 
 .contact-info-item{ display:flex; gap:14px; margin-bottom:26px; }
 .contact-info-item svg{ flex:none; color:var(--amber-dim); margin-top:2px; }
+.contact-info-item > div{ min-width:0; }
+.contact-info-item p{ overflow-wrap:anywhere; }
 .contact-info-item h3{ font-family:var(--mono); font-weight:500; font-size:11.5px; letter-spacing:.03em; text-transform:uppercase; color:var(--amber-dim); margin-bottom:6px; }
 .contact-info-item p,
 .contact-info-item a{ font-size:14.5px; color:var(--ink); }
 .contact-info-item a:hover{ color:var(--amber-dim); }
 
-.form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-@media (max-width:520px){ .form-row{ grid-template-columns:1fr; } }
-.form-field{ display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+.form-row{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; }
+@media (max-width:520px){ .form-row{ grid-template-columns:minmax(0,1fr); } }
+.form-field{ min-width:0; display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
 .form-field label{ font-family:var(--mono); font-size:11.5px; letter-spacing:.02em; color:var(--ink-soft); text-transform:uppercase; }
 .form-field .required{ color:var(--rust); }
 .form-field input,
 .form-field textarea{
+  width:100%; min-width:0;
   border:1.5px solid var(--line); background:var(--paper);
   padding:11px 12px; font-family:var(--body); font-size:14.5px; color:var(--ink);
 }
@@ -497,7 +501,7 @@ h1,h2,h3,h4,h5{ font-family:var(--head); font-weight:700; line-height:1.2; }
 .footer-brand{ display:flex; flex-direction:column; gap:14px; }
 .footer-brand .brand{ color:var(--concrete); }
 .footer-brand p{ font-size:13.5px; color:var(--muted); max-width:40ch; }
-.footer-col h4{
+.footer-col h2{
   font-family:var(--mono); font-weight:500; font-size:11.5px; letter-spacing:.04em;
   text-transform:uppercase; color:var(--amber); margin-bottom:14px;
 }
