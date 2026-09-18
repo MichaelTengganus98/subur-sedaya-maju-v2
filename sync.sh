@@ -3,14 +3,16 @@
 # One-shot: bring this checkout up to date and ready to serve.
 # Safe to run for the first-time setup AND after every `git pull`.
 #
-#   bash sync.sh
+#   bash sync.sh          # setup only
+#   bash sync.sh --run    # setup, then start the dev server (DEBUG checkouts only)
 #
 # Steps:
 #   1. create/reuse a virtualenv, install/upgrade requirements.txt
 #   2. run database migrations
 #   3. collect static files
 #   4. create/refresh the admin login (see "Admin login" below)
-#   5. on a Passenger/cPanel deploy, touch tmp/restart.txt
+#   5. on a Passenger/cPanel deploy, touch tmp/restart.txt; with --run on a
+#      dev checkout, exec `manage.py runserver` instead
 #
 # Optional env vars:
 #   SSM_PYTHON        interpreter to build the venv   (default: python3.8 -> python3 -> python)
@@ -30,6 +32,14 @@
 
 set -euo pipefail
 cd "$(dirname "$0")"
+
+RUN_SERVER=0
+for arg in "$@"; do
+  case "$arg" in
+    --run|-r) RUN_SERVER=1 ;;
+    *) echo "unknown argument: $arg" >&2; exit 1 ;;
+  esac
+done
 
 say() { printf '\n\033[1m== %s ==\033[0m\n' "$*"; }
 
@@ -98,10 +108,17 @@ fi
 
 say "5/5  restart"
 if [ "$IS_DEBUG" = "1" ]; then
+  if [ "$RUN_SERVER" = "1" ]; then
+    echo "  starting dev server - http://127.0.0.1:8000/"
+    echo
+    exec "$PY" manage.py runserver
+  fi
   echo "  dev checkout - start the server with:  \"$PY\" manage.py runserver"
+  echo "  (or re-run: bash sync.sh --run)"
 elif [ -f passenger_wsgi.py ]; then
   mkdir -p tmp && touch tmp/restart.txt
   echo "  touched tmp/restart.txt - Passenger will reload the app"
+  [ "$RUN_SERVER" = "1" ] && echo "  --run is ignored outside a DEBUG checkout"
 else
   echo "  no passenger_wsgi.py here; restart your app server manually"
 fi
