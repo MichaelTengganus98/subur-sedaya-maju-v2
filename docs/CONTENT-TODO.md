@@ -50,8 +50,15 @@ Status of content on the `revamp/django-cpanel` home page. The visible
 - Confirm the "20+ tahun" figure (2006 → 2026 ≈ 20 years).
 - ~~Decide whether the contact form should send email server-side~~ — done: the
   form now POSTs to the `contact` app, saves a `ContactMessage`, and emails
-  `CONTACT_EMAIL`. Submissions are at `/message/` and in the Django admin.
+  `CONTACT_EMAIL` **and** a hardcoded `admin@subursedayamaju.co.id` fallback
+  (so a blank/misconfigured `CONTACT_EMAIL` can never fully silence
+  notifications). Submissions are at `/message/` and in the Django admin.
   Configure real SMTP (`EMAIL_*` env vars) on the server so the notification
   actually sends.
+- ~~Add spam protection to the contact form~~ — done: honeypot field (existing)
+  plus a signed render-time token that rejects submissions faster than 3s
+  (bot-speed) or older than 6h (stale/replayed), plus a per-IP rate limit
+  (3 submissions / 10 min). See `apps/contact/forms.py` and
+  `apps/contact/views.py`.
 - Replace the reused hero/partner/mitra photos in the Fleet section once
   dedicated unit photos exist, so no image appears twice on the page.

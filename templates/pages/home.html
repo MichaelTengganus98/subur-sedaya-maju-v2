@@ -516,6 +516,7 @@
 
 				<form id="contact-form" class="contact-form" method="post" action="{% url 'contact:submit' %}">
 					{% csrf_token %}
+					<input type="hidden" name="form_token" value="{{ contact_form_token }}">
 					<div class="hp-field" aria-hidden="true">
 						<label>Jangan isi kolom ini
 							<input type="text" name="website" tabindex="-1" autocomplete="off">

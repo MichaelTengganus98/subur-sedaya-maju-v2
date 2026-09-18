@@ -5,11 +5,18 @@ from django.template.loader import render_to_string
 from django.views import View
 from django.views.generic import TemplateView
 
+from apps.contact.forms import make_form_token
+
 from .seo_audit import audit
 
 
 class HomeView(TemplateView):
     template_name = "pages/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["contact_form_token"] = make_form_token()
+        return context
 
 
 class SeoAuditView(View):

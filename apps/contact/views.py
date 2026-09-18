@@ -1,4 +1,5 @@
 import logging
+from datetime import timedelta
 
 from django.conf import settings
 from django.contrib import messages
@@ -6,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.utils import timezone
 from django.views import View
 from django.views.generic import ListView
 
@@ -13,6 +15,14 @@ from .forms import ContactForm
 from .models import ContactMessage
 
 log = logging.getLogger(__name__)
+
+# Always notified in addition to settings.CONTACT_EMAIL, so a blank/misconfigured
+# CONTACT_EMAIL env var can never fully silence contact notifications.
+ADMIN_FALLBACK_EMAIL = "admin@subursedayamaju.co.id"
+
+# Per-IP flood guard, on top of the honeypot + timing checks in ContactForm.
+RATE_LIMIT_WINDOW = timedelta(minutes=10)
+RATE_LIMIT_MAX = 3
 
 
 def _client_ip(request):
@@ -36,17 +46,31 @@ class ContactSubmitView(View):
             log.info("contact form rejected: %s", form.errors.as_json())
             return redirect(reverse(self.home) + "?galat=1#contact-us")
 
+        ip = _client_ip(request)
+        if ip and self._rate_limited(ip):
+            log.info("contact form rate-limited: %s", ip)
+            return redirect(reverse(self.home) + "?galat=1#contact-us")
+
         msg = form.save(commit=False)
-        msg.ip_address = _client_ip(request)
+        msg.ip_address = ip
         msg.user_agent = request.META.get("HTTP_USER_AGENT", "")[:300]
         msg.save()
         self._notify(msg)
         messages.success(request, "Pesan Anda sudah kami terima.")
         return redirect(reverse(self.home) + "?terkirim=1#contact-us")
 
+    def _rate_limited(self, ip):
+        window_start = timezone.now() - RATE_LIMIT_WINDOW
+        recent = ContactMessage.objects.filter(ip_address=ip, created_at__gte=window_start)
+        return recent.count() >= RATE_LIMIT_MAX
+
     def _notify(self, msg):
-        recipient = getattr(settings, "CONTACT_EMAIL", "")
-        if not recipient:
+        recipients = []
+        for addr in (getattr(settings, "CONTACT_EMAIL", ""), ADMIN_FALLBACK_EMAIL):
+            addr = (addr or "").strip()
+            if addr and addr.lower() not in (seen.lower() for seen in recipients):
+                recipients.append(addr)
+        if not recipients:
             return
         body = (
             f"Nama    : {msg.full_name or '-'}\n"
@@ -61,7 +85,7 @@ class ContactSubmitView(View):
                 f"[Website] Pesan baru dari {msg.full_name or msg.email}",
                 body,
                 settings.DEFAULT_FROM_EMAIL,
-                [recipient],
+                recipients,
                 fail_silently=True,
             )
         except Exception:  # pragma: no cover - never break the save on mail issues
